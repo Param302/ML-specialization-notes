@@ -27,7 +27,7 @@ Example:
 
 ---
 
-#### Notations in Machine Learning
+### Notations in Machine Learning
 
 **Note**: These are just standard names for specific data in **ML**, it is not compulsory to follow these notations.
 
