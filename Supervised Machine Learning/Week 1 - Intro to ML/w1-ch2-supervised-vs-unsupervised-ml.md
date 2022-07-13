@@ -76,7 +76,7 @@ Example:
 ---
 
 ### Unsupervised learning
-> In unsupervised learning, dta only comes with inputs (`x`), but not output labels (`y`). Algorithm has to find some **structure** or some **pattern** in the data.
+> In unsupervised learning, data only comes with inputs (`x`), but not output labels (`y`). Algorithm has to find some **structure** or some **pattern** in the data.
 > 
 > In Unsupervised learning, we input data (`x`) that isn't associated with any output labels (`y`), instead, our job is to find some structure or some pattern or just find something interesting in the data. ~ *Andrew Ng*
 
@@ -122,7 +122,7 @@ Fraud detection in finanical system, where unusual events, unusual transactions 
 | Application                      | Supervised | Unsupervised |
 |:--------------------------------:|:----------:|:------------:|
 | Weather Forecasting              |     ✅     |      ❌     |
-| Spam Detection                   |     ❌     |      ✅     |
+| Spam Detection                   |     ✅     |      ❌     |
 | Customer types                   |     ❌     |      ✅     |
 | SEO (search engine optimization) |     ✅     |      ❌     |
 | Medical Imaging                  |     ❌     |      ✅     |
