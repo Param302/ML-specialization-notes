@@ -144,7 +144,7 @@ Fraud detection in finanical system, where unusual events, unusual transactions 
 - And you can also submit your answers to me by creating a pull request and adding your answer in [this](quizzes/w1.md) readme file and I will review it for sure.
 
 #### Video Quiz 1
-<img src="./../quizzes/video%20quiz%201%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-1" height="300px">
+<img src="./../quizzes/Video%20quiz%201%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-1" height="300px">
 <details>
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 1</b></font>
@@ -153,7 +153,7 @@ Fraud detection in finanical system, where unusual events, unusual transactions 
 </details>
 
 #### Video Quiz 2
-<img src="./../quizzes/video%20quiz%202%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-2" height="300px">
+<img src="./../quizzes/Video%20quiz%202%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-2" height="300px">
 <details>
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 2</b></font>
@@ -162,7 +162,7 @@ Fraud detection in finanical system, where unusual events, unusual transactions 
 </details>
 
 #### Video Quiz 3
-<img src="./../quizzes/video%20quiz%203%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-3" height="500px">
+<img src="./../quizzes/Video%20quiz%203%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-3" height="500px">
 <details>
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 3</b></font>

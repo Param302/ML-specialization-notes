@@ -160,7 +160,7 @@ Example House price data:
 ### Quizzes
 
 #### Video quiz 1
-<img src="./../quizzes/video%20quiz%204%20-%20regression%20model.jpg" alt="video-quiz-1" width="60%">
+<img src="./../quizzes/Video%20quiz%204%20-%20regression%20model.jpg" alt="video-quiz-1" width="60%">
 <details>
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 1</b></font>
@@ -169,10 +169,13 @@ Example House price data:
 </details>
 
 #### Video quiz 2
-<img src="./../quizzes/video%20quiz%205%20-%20regression%20model.jpg" alt="video-quiz-2" width="60%">
+<img src="./../quizzes/Video%20quiz%205%20-%20regression%20model.jpg" alt="video-quiz-2" width="60%">
 <details>
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 2</b></font>
 </summary>
     <p>If you have selected 1st option then you are right!<br/>w and b are parameters of the model, adjusted as the model learns from the data. They’re also referred to as “coefficients” or “weights”.</p>
 </details>
+
+"https://github.com/Param302/ML-specialization-notes/blob/master/Supervised%20Machine%20Learning/quizzes/video%20quiz%204%20-%20regression%20model.jpg"
+"https://github.com/Param302/ML-specialization-notes/blob/master/Supervised%20Machine%20Learning/quizzes/Video%20quiz%204%20-%20regression%20model.jpg"
