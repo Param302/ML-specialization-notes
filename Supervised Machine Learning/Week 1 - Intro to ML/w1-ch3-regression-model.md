@@ -165,7 +165,7 @@ Example House price data:
 <summary>
     <font size='3', color='#00FF00'>Answer to <b>video quiz 1</b></font>
 </summary>
-    <p>If you have selected 3rd option then you are right!<br/>y is the true value for that training example, referred to as the output variable, or “target”.</p>
+    <p>If you have selected 2nd option then you are right!<br/>y is the true value for that training example, referred to as the output variable, or “target”.</p>
 </details>
 
 #### Video quiz 2
