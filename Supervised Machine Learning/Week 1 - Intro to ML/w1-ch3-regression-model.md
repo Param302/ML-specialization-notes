@@ -176,6 +176,3 @@ Example House price data:
 </summary>
     <p>If you have selected 1st option then you are right!<br/>w and b are parameters of the model, adjusted as the model learns from the data. They’re also referred to as “coefficients” or “weights”.</p>
 </details>
-
-"https://github.com/Param302/ML-specialization-notes/blob/master/Supervised%20Machine%20Learning/quizzes/video%20quiz%204%20-%20regression%20model.jpg"
-"https://github.com/Param302/ML-specialization-notes/blob/master/Supervised%20Machine%20Learning/quizzes/Video%20quiz%204%20-%20regression%20model.jpg"
