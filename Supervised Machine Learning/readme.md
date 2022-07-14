@@ -7,11 +7,11 @@ This is 1st Course under Machine Learning Specialization by [Deeplearning.ai](ht
 
 - This course is divided into 3 weeks
 
-| Weeks | Name                                     | My notes   |
-|:-----:|------------------------------------------|:----------:|
-| 1     | Introduction to Machine Learning         | [🔗](./Week%201%20-%20Intro%20to%20ML/) |
-| 2     | Regression with multiple input variables | Added soon |
-| 3     | Classification                           | Added soon |
+| Weeks | Name                                     | Slides | My notes   |
+|:-----:|------------------------------------------|:------:|:----------:|
+| 1     | Introduction to Machine Learning         | [🔗](./slides/Week%201%20-%20Intro%20to%20ML.pdf) | [🔗](./Week%201%20-%20Intro%20to%20ML/) |
+| 2     | Regression with multiple input variables | [🔗](./slides/Week%202%20-%20Regression%20with%20multiple%20input%20variables.pdf) | Added soon |
+| 3     | Classification                           | [🔗](./slides/Week%203%20-%20Classification.pdf) | Added soon |
 
 - Codes [🔗](./codes/)
 - Quizzes [🔗](./quizzes/) (You can solve and submit too!)

@@ -3,7 +3,7 @@
 ## Ch 3: Regression Model
 
 ### Linear Regression model
-<img src="./images/linaer_regression.jpg" alt="linear_regression" width="500px">
+<img src="./images/linear_regression.jpg" alt="linear_regression" width="500px">
 
 > Linear Regressor model means fitting a straight line to your data. ~ *Andrew Ng*
 
@@ -22,10 +22,107 @@ Example:
 - Now, we will draw another straight line, this time from the point where vertical line intersects with *regression* line to the **y-axis** i.e. on house price in `$1000`.
 - And mark the point where that line intersects with **y-aixs**. That point is the price of *Param*'s house i.e. 
 
-<img src="./images/linaer_regression_example.jpg" alt="linear_regression_example" width="800px">
+<img src="./images/linear_regression_example.jpg" alt="linear_regression_example" width="800px">
+
+---
+
+### How `linear regression` works
+
+<img src="./images/supervised-learning-flow.png" alt="supervised-learning-flow" height="500px">
+
+> To Train the **model**, you feed the **training dataset**, both the input `features` and the `output` targets to your learning algorithm (*linear regression*). Then your supervised learning algorithm will produce this function.
+> $$ f(x) = wx + b$$
+> or more precisely, this
+> $$ f_{w,b}(x) = wx + b$$
+> Here, `f` in lowercase, stands for function.
+> 
+> The job of this function is to take a new input `x` and output a estimate or a prediction, which is `ŷ` (y-hat). This function is called the **model**.
+> 
+> `x` is the input feature in the model and output is the prediction of the model i.e. `ŷ` (y-hat). Here, `ŷ` is the estimated value of `y`. ~ *Andrew Ng*
+
+<img src="./images/linear_regression.jpg" alt="linear_regression" width="500px">
+
+- In above image, the **Regression line** is that function.
+
+> This `linear regression` model has `1` feature, so we call it **Linear Regression with one variable**, where the one varible means that therere's a single input variable or feature `x`, i.e. the size of the house. ~ *Andrew Ng*
+> 
+> Another name for a `linear model` with `one input` variable is **Univariate linear regression**, where *uni* means *one* in latin, and *variate* means *variable*. ~ *Andrew Ng*
+
+---
+
+#### Jupyter Lab [optional] [🔗](./../codes/W1%20-%20L2%20-%20Model%20Representation%20%5Boptional%5D.ipynb)
+
+---
+
+### Cost function
+
+$$J(w,b) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (ŷ^{(i)} - y^{(i)})^2$$ 
+
+> The **cost function** tell us how well the model is doing. ~ *Andrew Ng*
+
+#### Why to use cost function
+To determine the error(difference) in predicted value and actual value, we use cost function.
+
+> In **linear regression** function $f_{w,b}(x) = wx + b$, the `w` and `b` are called *parameters* of the model. 
+> 
+> In machine learning *parameters* of the model are the *variables* you can adjust during training in order to improve the model.
+> These parameters are also known as *weights* or *coefficients*. ~ *Andrew Ng*
+
+These **weights** help us to determine the best fit of *regression line* in our **linear regression** model, so that it can predict the best value for our **target** variable.
+
+Let's see the `regression line` with different values of `w` and `b` in *linear regression* function:
+|                 | 1                    | 2                     | 3                   |
+|-----------------|:--------------------:|:---------------------:|:-------------------:|
+| **Weights**         |`w = 0` and `b = 1.5` | `w = 0.5` and `b = 0` | `w = 0` and `b = 1` |
+| **Regression line** | <img src="./images/weights-graph-1.png" alt="weight-graph-1" width="400px"> | <img src="./images/weights-graph-2.png" alt="weight-graph-2" width="400px"> | <img src="./images/weights-graph-3.png" alt="weight-graph-3" width="400px"> |
+
+
+Now, let's examine the *training set*:
+
+<img src="./images/regression-line-example.png" alt="regression-line-example">
+
+1. In *training set*, with **linear regression** we want to choose values for the parameters `w` and `b` which can fits the **regression line** on data perfectly.
+2. The *regression line* is formed by the function $f_{w, b}$
+3. `i` is the index / specific row of *training data*.
+4. `x`<sup>`(i)`</sup> on `x-axis` is the feature i.e. *house size*.
+5. `y`<sup>`(i)`</sup> on `y-axis` is the target variable i.e. *house price*.
+6. `x` markers in the graph are `i`<sup>th</sup> training row i.e. (x<sup>(i)</sup>, y<sup>(i)</sup>).
+7. For a given input `x`<sup>`(i)`</sup> the function $f_{w, b}$ makes a predictive value for `y` i.e. `ŷ` on `y-axis` of graph.
+8. But the actual `y` value makes some difference with `ŷ` value.
+9. That difference is **ERROR** in our function $f_{w, b}$
+
+- So, to determine the best value for `w` and `b` so that it can fit the `regression line` accurately on data, we use **cost function**.
+
+---
+
+#### Formula of Cost function
+1. First, we will subtract actual value `y` from predicted value `ŷ` (the difference is called **ERROR**) and then square the **ERROR**. 
+$$(ŷ - y)^2$$
+2. We will compute this error for each training example i.e. each `i`<sup>`th`</sup> index.
+$$(ŷ^{(i)} - y^{(i)})^2$$
+3. And we will sum up the error
+$$\sum(ŷ^{(i)} - y^{(i)})^2$$
+4. We are starting from 1st training example, where `i = 1`
+$$\sum_{i = 1}(ŷ^{(i)} - y^{(i)})^2$$
+5. And, we will calculate it upto `m`, i.e. total number of training examples.
+$$\sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
+6. To compute the cost function whose value doesn't get bigger automatically, we will take average of `m` by dividing it with `1`.
+$$\frac{1}{2m} \sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
+7. We are dividing `1` by `2m` instead of `m` so that the cost function doesn't depend upon the number of training examples, this helps us in better comparison.
+8. We will refer to this expression to $j(w, b)$ eventually, we will find out the best values for our weights `w` and `b`.
+$$j(w, b) = \frac{1}{2m} \sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
+9. And we know that, `ŷ` is the predicted value of function $f_{w, b}(x)$, so will substitute it.
+$$j(w, b) = \frac{1}{2m} \sum\limits_{i = 1}^{m}(f_{w, b}(x^{(i)}) - y^{(i)})^2$$
+10. And, our **Cost Function** is ready and this cost function is known as **Squared error cost function**.
+
+> So, formula of **Squared error cost function** is:
+> $$j(w,b) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$$ 
+> where 
+> $$f_{w,b}(x^{(i)}) = wx^{(i)} + b$$
 
 
 ---
+
 
 ### Notations in Machine Learning
 
@@ -42,18 +139,40 @@ Example House price data:
 3. We use lowercase `y` to denote the output variable / target variable. Example `y` is house price.
 4. We use lowercase `m` for total number of training data. Example: `m=47`.
 5. We use lowercase `x` & `y` in parenthesis or in tuple like `(x, y)` to denote a single training data. Example `(x, y) = (2500, 410)`.
-6. To refer a specific training data, we use `x` & `y` same as above in parenthesis or a tuple with **superscripted** `i` to both of them, where `i` is the index to a specific row like `(x`<sup>`i`</sup>`, y`<sup>`i`</sup>`)`. Example: `(x`<sup>`i`</sup>`, y`<sup>`i`</sup>`) = (1534`<sup>`3`</sup>`, 315`<sup>`3`</sup>`)`.
+6. To refer a specific training data, we use `x` & `y` same as above in parenthesis or a tuple with **superscripted** `i` to both of them, where `i` is the index to a specific row like (x<sup>i</sup>, y<sup>i</sup>). Example: (x<sup>i</sup>, y<sup>i</sup>) = (1534<sup>3</sup>, 315<sup>3</sup>).
 
 
-| Notation                                 | Meaning                          | Example                                       |
-|:----------------------------------------:|:--------------------------------:|:---------------------------------------------:|
-| `Training data`                          | data which our model learns      | house price data                              |
-| `x`                                      | input data                       | house size                                    |
-| `y`                                      | output / target variable         | house price                                   |
-| `m`                                      | total number of training data    | `47`                                          |
-| `(x, y)`                                 | single training data             | `(2500, 410)`                                 |
-| `i`                                      | index / row of training data     | `3`                                           |
-| `(x`<sup>`i`</sup>`, y`<sup>`i`</sup>`)` | `i`<sup>th</sup> training data   | `(1534`<sup>`3`</sup>`, 315`<sup>`3`</sup>`)` |
-
+| Notation                                 | Meaning                               | Example                                       |
+|-----------------------------------------:|:--------------------------------------|:---------------------------------------------:|
+| Training data                            | data which our model learns           | house price data                              |
+| `x`                                      | input data                            | house size                                    |
+| `y`                                      | output / target variable              | house price                                   |
+| `m`                                      | total number of training data         | `47`                                          |
+| `(x, y)`                                 | single training data                  | `(2500, 410)`                                 |
+| `i`                                      | index / row of training data          | `3`                                           |
+| (x<sup>i</sup>, y<sup>i</sup>)           | `i`<sup>th</sup> training data        | (1534<sup>3</sup>, 315<sup>3</sup>)           |
+| $f_{w,b}(x) = wx + b$                    | linear regression equation            | -                                             |
+| `w, b`                                   | weights of linear regression equation | -                                             |
+| $j(w,b) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$ | Squared Error Cost function | -                 |
 
 ---
+
+### Quizzes
+
+#### Video quiz 1
+<img src="./../quizzes/video%20quiz%204%20-%20regression%20model.jpg" alt="video-quiz-1" width="60%">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>video quiz 1</b></font>
+</summary>
+    <p>If you have selected 3rd option then you are right!<br/>y is the true value for that training example, referred to as the output variable, or “target”.</p>
+</details>
+
+#### Video quiz 2
+<img src="./../quizzes/video%20quiz%205%20-%20regression%20model.jpg" alt="video-quiz-2" width="60%">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>video quiz 2</b></font>
+</summary>
+    <p>If you have selected 1st option then you are right!<br/>w and b are parameters of the model, adjusted as the model learns from the data. They’re also referred to as “coefficients” or “weights”.</p>
+</details>

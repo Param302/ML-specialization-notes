@@ -135,19 +135,55 @@ Fraud detection in finanical system, where unusual events, unusual transactions 
 
 ---
 
-#### Jupyter Lab [🔗](./../codes/lab-1%20Jupyter%20Notebooks%20[optional].ipynb)
+### Jupyter Lab [optional] [🔗](./../codes/W1%20-%20L1%20-%20Jupyter%20Notebooks%20%5Boptional%5D.ipynb)
 
 ---
-#### Practice Quiz 1: Supervised vs Unsupervised learning
+
+### Quizzes
 - Try to attempt these questions yourself.
 - And you can also submit your answers to me by creating a pull request and adding your answer in [this](quizzes/w1.md) readme file and I will review it for sure.
 
-**Quiz:**
+#### Video Quiz 1
+<img src="./../quizzes/video%20quiz%201%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-1" height="300px">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>video quiz 1</b></font>
+</summary>
+    <p>If you have selected 2nd option (<i>Would have made it worse</i>) then you are right!<br/>In general, the more opportunities you give a learning algorithm to learn, the better it will perform.</p>
+</details>
 
-![quiz_1](./../quizzes/Quiz%20-%201%20Supervised%20vs%20unsupervised%20learning.jpg)
+#### Video Quiz 2
+<img src="./../quizzes/video%20quiz%202%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-2" height="300px">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>video quiz 2</b></font>
+</summary>
+    <p>If you have selected 1st option (<i>Spam filtering</i>) then you are right!<br/>For instance, emails labeled as "spam" or "not spam" are examples used for training a supervised learning algorithm. The trained algorithm will then be able to predict with some degree of accuracy whether an unseen email is spam or not.</p>
+</details>
 
-> Well, this is very easy, if you've read till here or you know already, means you got all of them!
+#### Video Quiz 3
+<img src="./../quizzes/video%20quiz%203%20-%20supervised%20vs%20unsupervised%20learning.jpg" alt="video-quiz-3" height="500px">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>video quiz 3</b></font>
+</summary>
+    <p>If you have selected 1st and 3rd options then you are right!<br/>These are the types of unsupervised learning called clustering</p>
+</details>
 
-**My Score:**
+#### Practice Quiz 1
+<img src="./../quizzes/Quiz%20-%201%20Supervised%20vs%20unsupervised%20learning.jpg" alt="practice quiz 1" height="600px">
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>Question 1</b></font>
+</summary>
+    <p>If you have selected 1st and 3rd options then you are right!<br/>Classification predicts from among a limited set of categories (also called classes). These could be a limited set of numbers or labels such as "cat" or "dog".<br/>Regression predicts a number among potentially infinitely possible numbers.</p>
+</details>
+<details>
+<summary>
+    <font size='3', color='#00FF00'>Answer to <b>Question 2</b></font>
+</summary>
+    <p>If you have selected 1st option then you are right!<br/>Clustering groups data into groups or clusters based on how similar each item (such as a hospital patient or shopping customer) are to each other.</p>
+</details>
+
 
 ![my_score](./../quizzes/my_score.jpg)
