@@ -63,8 +63,10 @@ Let's try once more:
 ----
 
 #### Algorithm
+> $$ reapeat \{$$
 > $$w = w - α \frac{dj(w,b)}{dw}$$
 > $$b = b - α \frac{dj(w,b)}{db}$$
+> $$ \} $$
 
 This is the algorithm of **Gradient Descent**, where we update both the *coefficients* `w` and `b` simultaneously.
 
