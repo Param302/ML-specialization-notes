@@ -131,25 +131,44 @@ w = w - 0.1 * d
 
 ----
 
+### Jupyter lab [optional] [🔗](../codes/W2%20-%20L1%20-%20Numpy%20Vectorization.ipynb)
+
+----
+
 ### *Gradient Descent* for multiple linear regression
 
 Let's see what is the formula for *multiple linear regression* for *Gradient Descent*:
 
 - Earlier, for one feature our formula was:
-$$repeat \{ $$
+$$repeat\enspace until\enspace convergence \{ $$
 $$w = w - a\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})x^{(i)}$$
 $$b = b - a\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$$
 $$ \} $$
 
 - But now, for multiple features our formula is:
-$$repeat \{ $$
+$$repeat\enspace until\enspace convergence \{ $$
 $$w_1 = w_1 - a\frac{1}{m}\sum\limits_{i=1}^m(f_{\vec{w},b}(\vec{x}^{(i)} - y^{(i)})x_1^{(i)}$$
 $$ \vdots $$
 $$w_n = w_n - a\frac{1}{m}\sum\limits_{i=1}^m(f_{\vec{w},b}(\vec{x}^{(i)} - y^{(i)})x_n^{(i)}$$
 $$b = b - a\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$$
 $$ \} $$
 
-- Now, for each feature, gradient descent will find best `w` parameter.
+- Now, for each feature $j$, gradient descent will find best $w_j$ parameter. So, it will run for total of $j$ features + $b$ paramter.
+
+
+----
+
+### Normal equation method
+> We know that *gradient descent* is a great method for minimizing the cost function $j$ to find $w$ and $b$, but there is one another algorithm that works only for *linear regression* which find *coefficients* all in one goal without iterations. This method is called **normal equation* method. ~ *Andrew Ng*
+
+But, it has some disadvantages:
+- It doesn't generalize to other learning algorithms like logistic regression etc...
+- It runs slow when number of features are more than $10^4$ ($10,000$).
+
+
+----
+
+### Jupyter lab [optional] [🔗](../codes/W2%20-%20L2%20-%20Multiple%20Variable%20Linear%20Regression%20[optional].ipynb)
 
 ----
 
@@ -171,29 +190,43 @@ $$ \} $$
 ### Quizzes
 
 #### Video quiz 1
-
 <img src="../quizzes/Video%20quiz%209%20-%20multiple%20linear%20regression.jpg" alt="video quiz 1" width="60%">
-
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>Video quiz 1</b></font></summary>
 <p>If you thought 852 then your are right! 852 is the first feature (first column in the table) of the fourth training example (fourth row in the table).</p>
 </details>
 
 #### Video quiz 2
-
 <img src="../quizzes/Video%20quiz%2010%20-%20multiple%20linear%20regression.jpg" alt="video quiz 2" width="60%">
-
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>Video quiz 2</b></font></summary>
 <p>If you have selected 1st option then your are right! This numpy function uses parallel hardware to efficiently calculate the dot product.</p>
 </details>
 
-
 #### Video quiz 3
-
 <img src="../quizzes/Video%20quiz%2011%20-%20multiple%20linear%20regression.jpg" alt="video quiz 3" width="60%">
-
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>Video quiz 3</b></font></summary>
 <p>If you have selected 1st option then your are right!</p>
+</details>
+
+#### Practice quiz 1 question 1
+<img src="../quizzes/Quiz%20-%204%20Multiple%20linear%20regression%20q1.jpg" alt="practice quiz 1 question 1" width="60%">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>question 1</b></font></summary>
+<p>If you thought 30 then your are right! It is the 4th feature (4th column in the table) of the 3rd training example (3rd row in the table).</p>
+</details>
+
+#### Practice quiz 1 question 2
+<img src="../quizzes/Quiz%20-%204%20Multiple%20linear%20regression%20q2.jpg" alt="practice quiz 1 question 2" width="60%">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>question 2</b></font></summary>
+<p>If you have selected d option (All of the above) then your are right! All of these are benefits of vectorization!</p>
+</details>
+
+#### Practice quiz 1 question 3
+<img src="../quizzes/Quiz%20-%204%20Multiple%20linear%20regression%20q3.jpg" alt="practice quiz 1 question 3" width="60%">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>question 3</b></font></summary>
+<p>If you have think it's False then your are right! Doubling the learning rate may result in a learning rate that is too large, and cause gradient descent to fail to find the optimal values for the parameters w and b.</p>
 </details>

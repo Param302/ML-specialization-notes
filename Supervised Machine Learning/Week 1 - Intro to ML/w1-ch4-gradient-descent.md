@@ -63,7 +63,7 @@ Let's try once more:
 ----
 
 #### Algorithm
-> $$ reapeat \{$$
+> $$repeat\enspace until\enspace convergence \{ $$
 > $$w = w - α \frac{dj(w,b)}{dw}$$
 > $$b = b - α \frac{dj(w,b)}{db}$$
 > $$ \} $$
