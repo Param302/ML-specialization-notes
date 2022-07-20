@@ -31,9 +31,9 @@ Example:
 <img src="./images/supervised-learning-flow.png" alt="supervised-learning-flow" height="500px">
 
 > To Train the **model**, you feed the **training dataset**, both the input `features` and the `output` targets to your learning algorithm (*linear regression*). Then your supervised learning algorithm will produce this function.
-> $$ f(x) = wx + b $$
+> $$f(x) = wx + b$$
 > or more precisely, this
-> $$ f_{w,b}(x) = wx + b $$
+> $$f_{w,b}(x) = wx + b$$
 > Here, `f` in lowercase, stands for function.
 > 
 > The job of this function is to take a new input `x` and output a estimate or a prediction, which is `ŷ` (y-hat). This function is called the **model**.
