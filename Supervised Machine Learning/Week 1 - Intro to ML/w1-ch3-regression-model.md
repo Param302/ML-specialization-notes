@@ -128,7 +128,7 @@ In our cost function $j(w,b) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{
 
 - First, let's focus only on `w` parameter.
 - So, now our *linear regression* function will be:
-$$ f_w(x) = wx $$
+$$f_w(x) = wx$$
 - And, our *Squared error cost function* will be:
 $$j(w) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w}(x^{(i)}) - y^{(i)})^2$$ 
 - We can also substitue $f_w(x^{(i)})$ with $wx^{(i)}$
