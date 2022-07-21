@@ -78,6 +78,69 @@ $$ŷ = w_1x_1 + w_2x_2 + b$$
 
 ---
 
+#### Checking *gradient descent* for convergence
+While using *gradient descent* to calculate the optimal model parameters, we need to check if the model is converged or not. 
+
+We can check this by drawing a *learning curve graph* of cost function $j$ with respect to each iteration.
+
+Your *learning curve graph* should look like this:
+
+<img src="./images/learning_curve_graph.jpg" alt="learning_curve_graph" width="500px">
+
+1. See, after `100` iterations, the graph is decreasing, this shows our *gradient descent* is working properly.
+
+<img src="./images/learning_curve_graph_2.jpg" alt="learning_curve_graph_2" width="500px">
+
+2. Now, after `200` iterations, it is also decreasing.
+
+<img src="./images/learning_curve_graph_3.jpg" alt="learning_curve_graph_3" width="500px">
+
+3. But, at `400` iterations, our graph stopped decreasing, but it became flat, which shows our *gradient descent* is converged.
+
+<img src="./images/learning_curve_graph_4.jpg" alt="learning_curve_graph_4" width="500px">
+
+So, now at `400` iterations, our *gradient descent* is converged. Means, we can use the parameters at `400` iteration for our model to train.
+
+- There is another way to decide when your model is done training is *Automatic convergence test*.
+Let's set ε (epsilon) variable to `0.001` or `10`$^{-3}$.
+
+If the difference between the cost function $j$ at two consecutive iterations is less than ε, then our model is converged, then we should stop training.
+
+
+---
+
+#### Choosing the learning rate
+Choosing an appropriate learning is important for *gradient descent* to run faster and find *global minimum* easily.
+
+- If you learning curve graph is increasing or making valleys, it means, *learning rate* is too large.
+
+<img src="./images/large-learning-rate-problem.jpg" alt="large-learning-rate-problem" width="800px">
+
+There are `2` reasons for this:
+1. Either *learning rate* is too large.
+2. Or, there is some bug in the code.
+
+- If your $j$ function graph with parameters look like this:
+
+<img src="./images/large-learning-rate-j-function.jpg" alt="large-learning-rate-j-function" width="500px">
+
+- It means, *learning rate* is too large, and it is skipping the *global minimum*.
+
+- But, if you use smaller *learning rate*, then it will take each step smaller and smaller and find *global minimum* easily.
+
+<img src="./images/small-learning-rate.jpg" alt="small-learning-rate" width="500px">
+
+You can try different choices of *learning rate* and see which is the best for your model.
+
+<img src="./images/choosing-learning-rate.jpg" alt="choosing-learning-rate" width="600px">
+
+You can do this by setting α (alpha) to a very small number and see if that causes the cost to decrease on each iteration or not. If even with small learning rate, cost function doesn' decrease on every single iteration, but instead sometimes increases, then there's a very much chance of bug in the code.
+
+---
+
+### Jupyter lab [optional] [🔗](../codes/W2%20-%20L3%20-%20Feature%20Scaling%20and%20Learning%20rate.ipynb)
+
+---
 
 ### Quizzes
 
@@ -86,4 +149,11 @@ $$ŷ = w_1x_1 + w_2x_2 + b$$
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>video quiz 1</b></font></summary>
 <p>If you have selected option a (Dividing each value by maximum of the value) then you are right! By dividing all values by the maximum, the new maximum range of the rescaled features is now 1 (and all other rescaled values are less than 1).</p>
+</details>
+
+#### Video quiz 2
+<img src="../quizzes/Video%20quiz%2013%20-%20learning%20rate.jpg" alt="Video quiz 2" width="600px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>video quiz 2</b></font></summary>
+<p>If you have selected option d "Try a smaller value of α (say α = 0.1) then you are right! Since the cost function is increasing, we know that gradient descent is diverging, so we need a lower learning rate.</p>
 </details>
