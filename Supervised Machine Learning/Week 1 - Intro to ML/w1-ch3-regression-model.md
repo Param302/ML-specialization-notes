@@ -31,9 +31,9 @@ Example:
 <img src="./images/supervised-learning-flow.png" alt="supervised-learning-flow" height="500px">
 
 > To Train the **model**, you feed the **training dataset**, both the input `features` and the `output` targets to your learning algorithm (*linear regression*). Then your supervised learning algorithm will produce this function.
-> $$ f(x) = wx + b$$
+> $$f(x) = wx + b$$
 > or more precisely, this
-> $$ f_{w,b}(x) = wx + b$$
+> $$f_{w,b}(x) = wx + b$$
 > Here, `f` in lowercase, stands for function.
 > 
 > The job of this function is to take a new input `x` and output a estimate or a prediction, which is `ŷ` (y-hat). This function is called the **model**.
@@ -128,7 +128,7 @@ In our cost function $j(w,b) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w,b}(x^{
 
 - First, let's focus only on `w` parameter.
 - So, now our *linear regression* function will be:
-$$ f_w(x) = wx $$
+$$f_w(x) = wx$$
 - And, our *Squared error cost function* will be:
 $$j(w) = \frac{1}{2m} \sum\limits_{i = 1}^{m} (f_{w}(x^{(i)}) - y^{(i)})^2$$ 
 - We can also substitue $f_w(x^{(i)})$ with $wx^{(i)}$
