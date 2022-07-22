@@ -78,16 +78,17 @@ $$ŷ = w_1x_1 + w_2x_2 + b$$
 
 ---
 
-#### Checking *gradient descent* for convergence
-While using *gradient descent* to calculate the optimal model parameters, we need to check if the model is converged or not. 
+#### Checking _gradient descent_ for convergence
 
-We can check this by drawing a *learning curve graph* of cost function $j$ with respect to each iteration.
+While using _gradient descent_ to calculate the optimal model parameters, we need to check if the model is converged or not.
 
-Your *learning curve graph* should look like this:
+We can check this by drawing a _learning curve graph_ of cost function $j$ with respect to each iteration.
+
+Your _learning curve graph_ should look like this:
 
 <img src="./images/learning_curve_graph.jpg" alt="learning_curve_graph" width="500px">
 
-1. See, after `100` iterations, the graph is decreasing, this shows our *gradient descent* is working properly.
+1. See, after `100` iterations, the graph is decreasing, this shows our _gradient descent_ is working properly.
 
 <img src="./images/learning_curve_graph_2.jpg" alt="learning_curve_graph_2" width="500px">
 
@@ -95,42 +96,43 @@ Your *learning curve graph* should look like this:
 
 <img src="./images/learning_curve_graph_3.jpg" alt="learning_curve_graph_3" width="500px">
 
-3. But, at `400` iterations, our graph stopped decreasing, but it became flat, which shows our *gradient descent* is converged.
+3. But, at `400` iterations, our graph stopped decreasing, but it became flat, which shows our _gradient descent_ is converged.
 
 <img src="./images/learning_curve_graph_4.jpg" alt="learning_curve_graph_4" width="500px">
 
-So, now at `400` iterations, our *gradient descent* is converged. Means, we can use the parameters at `400` iteration for our model to train.
+So, now at `400` iterations, our _gradient descent_ is converged. Means, we can use the parameters at `400` iteration for our model to train.
 
-- There is another way to decide when your model is done training is *Automatic convergence test*.
-Let's set ε (epsilon) variable to `0.001` or `10`$^{-3}$.
+-   There is another way to decide when your model is done training is _Automatic convergence test_.
+    Let's set ε (epsilon) variable to `0.001` or `10`$^{-3}$.
 
 If the difference between the cost function $j$ at two consecutive iterations is less than ε, then our model is converged, then we should stop training.
-
 
 ---
 
 #### Choosing the learning rate
-Choosing an appropriate learning is important for *gradient descent* to run faster and find *global minimum* easily.
 
-- If you learning curve graph is increasing or making valleys, it means, *learning rate* is too large.
+Choosing an appropriate learning is important for _gradient descent_ to run faster and find _global minimum_ easily.
+
+-   If you learning curve graph is increasing or making valleys, it means, _learning rate_ is too large.
 
 <img src="./images/large-learning-rate-problem.jpg" alt="large-learning-rate-problem" width="800px">
 
 There are `2` reasons for this:
-1. Either *learning rate* is too large.
+
+1. Either _learning rate_ is too large.
 2. Or, there is some bug in the code.
 
-- If your $j$ function graph with parameters look like this:
+-   If your $j$ function graph with parameters look like this:
 
 <img src="./images/large-learning-rate-j-function.jpg" alt="large-learning-rate-j-function" width="500px">
 
-- It means, *learning rate* is too large, and it is skipping the *global minimum*.
+-   It means, _learning rate_ is too large, and it is skipping the _global minimum_.
 
-- But, if you use smaller *learning rate*, then it will take each step smaller and smaller and find *global minimum* easily.
+-   But, if you use smaller _learning rate_, then it will take each step smaller and smaller and find _global minimum_ easily.
 
 <img src="./images/small-learning-rate.jpg" alt="small-learning-rate" width="500px">
 
-You can try different choices of *learning rate* and see which is the best for your model.
+You can try different choices of _learning rate_ and see which is the best for your model.
 
 <img src="./images/choosing-learning-rate.jpg" alt="choosing-learning-rate" width="600px">
 
@@ -142,9 +144,89 @@ You can do this by setting α (alpha) to a very small number and see if that cau
 
 ---
 
+#### Feature Engineering
+
+> _Feature engineering_ is using intuition to design new features, by transforming or combining original features. ~ _Andrew Ng_
+
+In _Feature engineering_, we make new features out of old features which makes the learning algorithm run faster and also makes the model more accurate.
+
+Let's take an example of _House price_ dataset.
+So, we have total 3 features:
+
+1. Frontage
+2. Depth
+3. Price
+
+And our target variable is price.
+
+<img src="./images/house_size.jpg" alt="house frontage and depth" width="400px">
+
+1st Approach would be, that we can learn our model based on 2 features i.e. _Frontage_ and _Depth_.
+And our _linear regression_ model function will be:
+$$f_{\vec{w}{b}}(x) = w_1x_1 + w_2x_2 + b$$
+
+2nd approach would be, that we will create a new feature named _Area_ which we can get by multiplying _Frontage_ and _Depth_.
+
+And here we need to have **domain knowledge** of the data.
+So, our model function as:
+$$f_{\vec{w}{b}}(x) = w_1x_1 + w_2x_2 + w_3x_3 + b$$
+
+---
+
+#### Polynomial Regression
+Until now, we've just been using *linear regression* model which fits **straight line* to our data.
+
+What if, our data is not linear, but it looks like a curve like this:
+
+<img src="./images/polynomial_regression.jpg" alt="polynomial regression" width="600px">
+
+Here, we can't fit a straight linear line to our data.
+
+We need some other model which makes curved linear line to our data.
+
+There comes the **polynomial regression**, there are many methods to do this.
+
+1. Using quadratic equation
+- We can use a quadratic equation to fit a curve to our data, which contains feature $x$ and $x^2$.
+
+$$f_{\vec{w}, b}(x) = w_1x + w_2x^2 + b$$
+
+<img src="./images/polynomial_regression_2.jpg" alt="polynomial regression line quadratic" width="600px">
+
+- But the quadratic function may eventually go down, which we don't want. As generally, house prices increases with the increase in size.
+
+2. Using cubic equation
+- We can use a cubic equation to fit a curve to our data, which contains feature $x$ and $x^2$ and $x^3$.
+
+$$f_{\vec{w}, b}(x) = w_1x + w_2x^2 + w_3x^3 + b$$
+
+<img src="./images/polynomial_regression_3.jpg" alt="polynomial regression line cubic" width="600px">
+
+- Here, we need to use *feature scaling*, because let's say, our house size $x$ ranges from $1$ to $10^3$, then it's square's range will be $1^2$ to $10^6$ and it's cube's range will be $1^3$ to $10^9$, which is a billion in numbers.
+
+3. Square root
+- We can use a square root equation to fit a curve to our data, which contains feature $x$ and $\sqrt{x}$.
+
+$$f_{\vec{w}, b}(x) = w_1x + w_2\sqrt{x} + b$$
+
+<img src="./images/polynomial_regression_4.jpg" alt="polynomial regression line square root" width="600px">
+
+- It becomes less steep as we increase the size of house, but it will never  flatten and never goes down.
+
+---
+
+### Jupyter lab [optional] [🔗](../codes/W2%20-%20L4%20-%20Feature-Engineering%20and%20Polynomial-regression.ipynb)
+
+---
+
+### Jupyter lab [optional] [🔗](../codes/W2%20-%20L5%20-%20Sklearn%20Linear%20regression.ipynb)
+
+---
+
 ### Quizzes
 
 #### Video quiz 1
+
 <img src="../quizzes/Video%20quiz%2012%20-%20feature%20scaling.jpg" alt="Video quiz 1" width="600px">
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>video quiz 1</b></font></summary>
@@ -152,8 +234,53 @@ You can do this by setting α (alpha) to a very small number and see if that cau
 </details>
 
 #### Video quiz 2
+
 <img src="../quizzes/Video%20quiz%2013%20-%20learning%20rate.jpg" alt="Video quiz 2" width="600px">
 <details>
 <summary><font size='3' color='#00FF00'>Answer to <b>video quiz 2</b></font></summary>
 <p>If you have selected option d "Try a smaller value of α (say α = 0.1) then you are right! Since the cost function is increasing, we know that gradient descent is diverging, so we need a lower learning rate.</p>
+</details>
+
+#### Video quiz 3
+
+<img src="../quizzes/Video%20quiz%2014%20-%20Feature%20Engineering.jpg" alt="Video quiz 3" width="600px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>video quiz 3</b></font></summary>
+<p>If you have selected option b (length x width x height) then you are right! The volume of the swimming pool could be a useful feature to use. This is the more useful engineered feature of the two.</p>
+</details>
+
+#### Practice quiz 1
+#### Question 1
+<img src="../quizzes/Quiz%20-%205%20Gradient%20descent%20in%20practice%20q1.jpg" alt="practice quiz question 1" width="600px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>practice question 1</b></font></summary>
+<p>If you have selected option a (Subtract the mean from each value and then divide by the (max-min)) then you are right! This is called mean normalization.</p>
+</details>
+
+#### Question 2
+<img src="../quizzes/Quiz%20-%205%20Gradient%20descent%20in%20practice%20q2.jpg" alt="practice quiz question 2" width="600px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>practice question 2</b></font></summary>
+<p>If you have selected option a (case B only) then you are right! The cost is increasing as training continues, which likely indicates that the learning rate alpha is too large.</p>
+</details>
+
+#### Question 3
+<img src="../quizzes/Quiz%20-%205%20Gradient%20descent%20in%20practice%20q3.jpg" alt="practice quiz question 3" width="800px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>practice question 3</b></font></summary>
+<p>If you have selected option a (Feature scaling is helpful when one feature is much larger(or smaller) than another feature) then you are right! For example, the “house size” in square feet may be as high as 2,000, which is much larger than the feature “number of bedrooms” having a value between 1 and 5 for most houses in the modern era.</p>
+</details>
+
+#### Question 4
+<img src="../quizzes/Quiz%20-%205%20Gradient%20descent%20in%20practice%20q4.jpg" alt="practice quiz question 4" width="800px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>practice question 4</b></font></summary>
+<p>If you have selected option a (For each product, calculate the no. of items sold times price per item) then you are right! This feature can be interpreted as the revenue generated for each product.</p>
+</details>
+
+#### Question 5
+<img src="../quizzes/Quiz%20-%205%20Gradient%20descent%20in%20practice%20q5.jpg" alt="practice quiz question 5" width="800px">
+<details>
+<summary><font size='3' color='#00FF00'>Answer to <b>practice question 5</b></font></summary>
+<p>If you have selected option a (True) then you are right! A polynomial function can be non-linear.  This can potentially help the model to fit the training data better.</p>
 </details>

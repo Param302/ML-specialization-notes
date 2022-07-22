@@ -23,6 +23,7 @@ ipython-genutils==0.2.0
 ipywidgets==7.7.1
 jedi==0.18.1
 Jinja2==3.1.2
+joblib==1.1.0
 jsonschema==4.7.2
 jupyter-client==7.3.4
 jupyter-core==4.11.1
@@ -59,11 +60,14 @@ pytz==2022.1
 pywin32==304
 pywinpty==2.0.6
 pyzmq==23.2.0
+scikit-learn==1.1.1
+scipy==1.8.1
 Send2Trash==1.8.0
 six==1.16.0
 soupsieve==2.3.2.post1
 stack-data==0.3.0
 terminado==0.15.0
+threadpoolctl==3.1.0
 tinycss2==1.1.1
 toml==0.10.2
 tornado==6.2
