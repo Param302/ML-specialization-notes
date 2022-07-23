@@ -223,6 +223,9 @@ $$f_{\vec{w}, b}(x) = w_1x + w_2\sqrt{x} + b$$
 
 ---
 
+### Programming Assignment: [Linear Regression](../codes/W2%20-%20Linear%20Regression%20assignment.ipynb)
+
+---
 ### Quizzes
 
 #### Video quiz 1
