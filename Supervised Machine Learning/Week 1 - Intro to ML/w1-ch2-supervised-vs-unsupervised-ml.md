@@ -52,7 +52,7 @@ Example:
 3. Deaths in COVID etc...
 
 #### Classification algorithm
-> In Classification algorithm, the learnign algorithm has to make a prediction of a category, all of a small set of possible outputs. Example: Cat or Dog ~ *Andrew Ng*
+> In Classification algorithm, the learning algorithm has to make a prediction of a category, all of a small set of possible outputs. Example: Cat or Dog ~ *Andrew Ng*
 
 We use **Classification** algorithm to predict qualitative (categories/classes) data, data having different categories.
 - In classification, we define boundaries by drawing lines which divide the data into different classes.
