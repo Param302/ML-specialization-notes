@@ -190,20 +190,307 @@ We can reduce the impact of _polynomial features_ by using _regularization_, mea
 
 <img src="./images/overfitted-regularization.jpg" alt="overfitted data regularization" width="300px">
 
+Now, let's look at how can we use _regularization_ to prevent _overfitting_.
+
 ---
 
 ### Jupyter lab: Overfitting [optional] [🔗](../codes/W3%20-%20L8%20-%20Overfitting.ipynb)
 
 ---
 
+### Regularization
+
+So, we know that _regularization_ is a way to prevent _overfitting_ by reducing the impact of weights ($w$) parameter, means reducing the value of $w$ parameter(s).
+
+#### Intuition
+
+When we have a very high range of _polynomial features_ let's say $x_j$ to $x^4_j$, then problem of _overfitting_, and there we can use _regularization_.
+
+<img src="./images/linear_regression_weights.jpg" alt="linear regression normal" width="300px">
+
+-   In above graph, we can see that we have a small _polynomial feature_, which makes our _regression line_ fits quite good.
+
+-   But let's say we have a big range of _polynomial features_ like $x_j$ to $x^4_j$, then our _regression line_ will be _very wiggly_ and _very curved_, and it will be _overfitted_ to data.
+
+<img src="./images/linear_regression_weights_overfitted.jpg" alt="linear regression overfitted" width="300px">
+
+-   Here, in above graph, we can see that this _regression line_ **overfits** the data.
+
+So, to handle this problem, we can reduce the values of parameters $w_3$ and $w_4$ nearly $0$ which makes our _regression line_ fits well and doesn't _overfit_.
+
+What we can do is:
+
+1. We know that our _Mean squared error_ cost function for _linear regression_ is:
+   $$J_{(\vec{w}, b)} = \frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w}, b}(\vec{x}^{(i)}) - y^{(i)}\right)^2$$
+
+2. We can modify our _cost function_ and add _1000_ times to square of $w_3$ and $w_4$ to our cost function:
+   $$J_{(\vec{w}, b)} = \frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w}, b}(\vec{x}^{(i)}) - y^{(i)}\right)^2 + 1000w^2_3 + 1000w^2_4$$
+
+3. With this, our _cost ERROR_ will be high if values of $w_3$ and $w_4$ are high.
+4. And, this let's our _gradient descent_ to find smaller values for _weights_, with which, it will end up nearly $0$.
+5. So, when $w_3 = 0$ and $w_4 = 0$, the $1000w^2_3$ and $1000w^2_4$ will cut out.
+6. And, finally we will get \*low values for $w$ parameter(s).
+7. And, this leds to fit our _regression line_ much closer to _quadratic function_.
+
+-   This is the idea behind regularization, if there are smaller values for parameters, it will make our _linear regression_ model much simpler to work.
+
+So, we have seen how to reduce values of 2 weight parameters $w_3$ and $w_4$.
+
+> Now, what if we have total of $100$ features in our dataset, and we don't know which features are important and which ones to reduce their weights for our model.
+>
+> So, the way _regularization_ implemented is to penalize all of the features, means penalize all the $w_j$ features and it's will usually result in fitting a smoother simpler function which is less prone to _overfitting_. ~ _Andrew Ng_
+
+Let's take _house price_ dataset example, and consider having $100$ features, and we don't know which ones are important and which ones to penalize, so what we'll do is, we will penalize all of them.
+
+<img src="./images/overfitted%20data%202.jpg" alt="100 features house price dataset" width="700px">
+
+1. So, we'll do some modification with our _Mean Squared eror_ cost function.
+   $$J_{(\vec{w},b)} = \frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)^2 + \frac{\lambda}{2m}\sum^n_{j=1}{w^2_j}$$
+
+2. Here, $\lambda$ is a _greek_ symbol, **_lambda_**.
+3. Now, similar to picking a learning rate $\alpha$, we also have to pick a value for $\lambda$.
+4. We are dividing $\lambda\sum{w^2_j}$ by $2m$ to make both $1^{st}$ and $2^{nd}$ term are scaled equally i.e. by $2m$.
+
+$$J_{(\vec{w},b)} = \overbrace{\frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)^2}^1 + \overbrace{\frac{\lambda}{2m}\sum^n_{j=1}{w^2_j}}^2$$
+
+5. If we scaled both values by same way like $2m$, it becomes a little bit easier to choose a good value for **lambda** $\lambda$.
+6. And if size of our dataset grows, means if we add more training examples, then $m$ will also increase. But the same value of **lambda** $\lambda$ now also work.
+
+7. Btw, by convention, we also penalize the value of $b$ parameter like this:
+   $$J_{(\vec{w},b)} = \frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)^2 + \frac{\lambda}{2m}\sum^n_{j=1}{w^2_j} + \frac{\lambda}{2m}b^2$$
+
+8. But, it makes a very small difference in practice, the more common convention is to penalize only weight parameters.
+
+So, to summarize, we need to minimize our _cost function_ which has:
+
+$$J_{(\vec{w},b)} = \overbrace{\frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)^2}^\text{mean squared error} + \overbrace{\frac{\lambda}{2m}\sum^n_{j=1}{w^2_j}}^\text{regularization term}$$
+
+The value of **lambda** $\lambda$ which we choose is matters:
+
+1. If we choose $\lambda = 0$, then our _regularization term_ will be $0$ and our _cost function_ will be _mean squared error_ only. Means, we'll end with same _wiggly_ regression line.
+
+<img src="./images/linear_regression_weights_overfitted.jpg" alt="linear regression overfitted" width="300px">
+
+1. If we choose $\lambda = 10^{10}$ a very big value, then the weights will reduced to $0$, and thus our function $f(\vec{x}) = \vec{w}\cdot\vec{x} + b$ will become $f(\vec{x}) = b$, which means _regression line_ will be a horizontal straight line and _underfits_.
+
+<img src="./images/linear_regression_weights_underfitted.jpg" alt="linear regression underfitted" width="300px">
+
+So, we want a value of **lambda** $\lambda$ which is not very high and not very low, and minimizing the _mean squared error_ with small values for weights parameters.
+
+---
+
+### Regularization with Linear Regression
+
+Now we knows what _regularization_ does, let's see how _gradient descent_ of _linear regression_ model will change:
+
+As we know:
+
+1.  _Linear regression_ function is:
+    $$f_{\vec{w}, b} = \vec{w}\cdot\vec{x} + b$$
+
+2.  New modified _Mean Squared error_ cost function is:
+    $$J_{(\vec{w},b)} = \frac{1}{2m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)^2 + \frac{\lambda}{2m}\sum^n_{j=1}{w^2_j}$$
+
+3.  Earlier, _gradient descent_ is:
+    $$\text{repeat until convergence} \lbrace$$
+    $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\frac{\partial}{\partial w}J_{(\vec{w}, b)}$$
+    $$\enspace b = b - \alpha\frac{\partial}{\partial b}J_{(\vec{w}, b)}$$
+    $$\rbrace$$
+
+4.  And, $\frac{\partial}{\partial w}$ is:
+    $$\frac{\partial}{\partial w} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)\vec{x}^{(i)}_j$$
+
+5.  And, $\frac{\partial}{\partial b}$ is:
+    $$\frac{\partial}{\partial b} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$
+
+6.  Now, as we have added additional _regularization_ term in our _cost function_ for weight parameters, so expression for $\frac{\partial}{\partial w}$ is changed to:
+    $$\frac{\partial}{\partial w} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)\vec{x}^{(i)}_j + \frac{\lambda}{m}w_j$$
+
+7.  And, our expression for $\frac{\partial}{\partial b}$ stays same as it is earlier, because we haven't added any extra term in _cost function_ for $b$ parameter.
+
+> So, final formula of **Regularized Gradient Descent** for **Linear Regression** is:
+> $$\text{repeat until convergence} \lbrace$$ 
+> $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right]$$ 
+> $$\enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$ 
+> $$\rbrace$$
+
+---
+
+#### Derivation of Regularized Gradient Descent for Linear Regression [optional]
+
+**Note**: This part is completely optional, and Video quiz $4$ also, so you can skip both of them if you want.
+
+Let's look at the updated value of $w_j$ in another way:
+
+-   $w_j$ is:
+    $$w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right]$$
+
+-   Another way to write $w_j$ is:
+    $$w_j = \alpha\frac{\lambda}{m}w_j - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j$$
+-   And we can more simply it:
+    $$w_j = w_j\left(1 - \alpha\frac{\lambda}{m}\right)  - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j$$
+-   There are $2$ parts now:
+    $$w_j = \underbrace{w_j\left(1 - \alpha\frac{\lambda}{m}\right)}_\text{New Part}  - \underbrace{\alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j}_\text{Original Part}$$
+-   The _Original Part_ is the old value of $\frac{\partial}{\partial w}$.
+-   The _New Part_ is the new _regularized_ value of $\frac{\partial}{\partial w}$.
+
+-   The only change we have added here is the _New Part_, which actually reduces the value of $w_j$.
+
+1. Let's say we have $\alpha = 0.01$ , $\lambda =1$ and $m = 50$.
+2. So, putting these values in _New Part_ we get:
+   $$0.01\frac{1}{50} = 0.0002$$
+3. A very small value, which then we subtract from $1$ we get:
+   $$(1 - 0.0002) = 0.9998$$
+4. This, a very small value then multiplied by $w_j$, which eventually decreases the value of $w_j$ at each iteration.
+
+Now, let's see how we actually this derivative term:
+
+-   By rules of Calculus, we know that, we can it as:
+    $$\frac{\partial}{\partial w_j}J{(\vec{w}, b)} = \frac{1}{2m}\sum^m_{i=1}\left[\left(\vec{w}\cdot\vec{x}^{(i)} + b - y^{(i)}\right)2x^{(i)}_j\right] + \frac{\lambda}{2m}2w_j$$
+-   After cancelling out $2$, we get:
+    $$\frac{\partial}{\partial w_j}J{(\vec{w}, b)} = \frac{1}{m}\sum^m_{i=1}\left[\left(\vec{w}\cdot\vec{x}^{(i)} + b - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j$$
+
+-   And, we can write $\vec{w}\cdot\vec{x}^{(i)} + b$ as function $f$:
+    $$f_{\vec{w},b}(\vec{x}^{(i)}) = \vec{w}\cdot\vec{x}^{(i)} + b$$
+-   Hence, our final expression for $\frac{\partial}{\partial w_j}J(\vec{w}, b)$ is:
+    > $$\frac{\partial}{\partial w_j}J{(\vec{w}, b)} = \frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w}, b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j$$
+
+---
+
+### Regularization with Logistic Regression
+
+Now we knows what _regularization_ does, let's see how _cost function_ and _gradient descent_ of _Logistic regression_ model will change:
+
+As we know:
+
+1. _Logistic Regression_ function is:
+   $$f_{\vec{w}, b}(\vec{x}) = \frac{1}{1 + e^{-z}}$$
+2. where $z$ is:
+   $$z = \vec{w}\cdot\vec{x} + b$$
+
+3. And our _cost function_ is:
+   $$J(\vec{w}, b) = - \frac{1}{m}\sum^m_{i=1}\left[y^{(i)}\log\left(f_{\vec{w},b}(\vec{x}^{(i)})\right) + \left(1 - y^{(i)}\right)\log\left(1 - f_{\vec{w},b}(\vec{x}^{(i)})\right)\right]$$
+
+4. Similar to the _regularized_ expression, which we have added in _cost function_ of _linear regression_, we'll add it up here also:
+   $$J(\vec{w}, b) = - \frac{1}{m}\sum^m_{i=1}\left[y^{(i)}\log\left(f_{\vec{w},b}(\vec{x}^{(i)})\right) + \left(1 - y^{(i)}\right)\log\left(1 - f_{\vec{w},b}(\vec{x}^{(i)})\right)\right] + \frac{\lambda}{2m}\sum^n_{j=1}w^2_j$$
+5. In this, we'll provide a value for **lambda** $\lambda$ which is not too small like $0$ which makes our model _overfitted_ or not too large like $10^{10}$ which makes our data _underfitted_.
+
+6. Earlier, _gradient descent_ is:
+   $$\text{repeat until convergence} \lbrace$$
+   $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\frac{\partial}{\partial w}J_{(\vec{w}, b)}$$
+   $$\enspace b = b - \alpha\frac{\partial}{\partial b}J_{(\vec{w}, b)}$$
+   $$\rbrace$$
+
+7. And, $\frac{\partial}{\partial w}$ is:
+   $$\frac{\partial}{\partial w} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)\vec{x}^{(i)}_j$$
+
+8. And, $\frac{\partial}{\partial b}$ is:
+   $$\frac{\partial}{\partial b} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$
+
+9. If you notice, the _gradient descent_ and their _derivatives_ are same as _linear regression_, but the definition of function $f$ is different for _logistic regression_.
+10. And, as we have added _regularized_ term in our _cost function_ for weight parameters, we'll add here it also.
+11. So expression for $\frac{\partial}{\partial w}$ is changed to:
+    $$\frac{\partial}{\partial w} = \frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)\vec{x}^{(i)}_j + \frac{\lambda}{m}w_j$$
+
+12. And, our expression for $\frac{\partial}{\partial b}$ stays same as it is earlier, because we haven't added any extra term in _cost function_ for $b$ parameter.
+
+> So, final formula of **Regularized Gradient Descent** for **Logistic Regression** is:
+> $$\text{repeat until convergence} \lbrace$$ 
+> $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right]$$ 
+> $$\enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$ 
+> $$\rbrace$$
+
+---
+
+### Jupyter lab: Regularization [optional] [🔗](../codes/W3%20-%20L9%20-%20Regularization.ipynb)
+
+---
+
+### Programming Assignment: [Logistic Regression](../codes/W3%20-%20Logistic%20Regression%20assignment.ipynb)
+
+---
+
+
 ### Quizzes
 
-##### Quiz 1
+#### Practice Quiz: The problem of Overfitting
 
-<img src="../quizzes/Video%20quiz%2020%20-%20regularization.jpg" alt="quiz 1" width="70%" style="min-width: 850px">
+#### Question 1
+
+<img src="../quizzes/Quiz%20-%209%20Overfitting%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup>, 3<sup>rd</sup> and 4<sup>th</sup></em> then you are right!<br/><b>Explanation:</b><br/>Regularization is used to reduce overfitting.<br/>If the model trains on the more relevant features, and not on the less useful features, it may generalize better to new examples.<br/>If the model trains on more data, it may generalize better to new examples.</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%20-%209%20Overfitting%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>d (The model has high variance (overfit). Thus, adding data is likely to help)</em> then you are right!<br/><b>Explanation:</b><br/>The model has high variance (it overfits the training data). Adding data (more training examples) can help.</p>
+</details>
+
+#### Question 3
+
+<img src="../quizzes/Quiz%20-%209%20Overfitting%20q3.jpg" alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>a (This will reduce the size of the parameters w<sub>1</sub>, w<sub>2</sub>, w<sub>3</sub>, ..., w<sub>n</sub></em> then you are right!<br/><b>Explanation:</b><br/>Regularization is used to reduce overfitting.<br/>Regularization reduces overfitting by reducing the size of the parameters w<sub>1</sub>, w<sub>2</sub>, w<sub>3</sub>, ..., w<sub>n</sub>.</p>
+</details>
+
+#### Quiz 1
+
+<img src="../quizzes/Video%20quiz%2020%20-%20regularization.jpg" alt="video quiz 1" width="70%" style="min-width: 850px">
 <details>
 <summary>    
     <font size='3' color='#00FF00'>Answer to <b>quiz 1</b></font>
 </summary>
 <p>If you have selected option <em>c (Overfitting (high variance))</em> then you are right!<br/><b>Explanation:</b><br/>This is when the model does not generalize well to new examples.</p>
+</details>
+
+#### Quiz 2
+
+<img src="../quizzes/Video%20quiz%2021%20-%20regularization.jpg" alt="video quiz 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>quiz 2</b></font>
+</summary>
+<p>If you have selected option <em>b (Addressing overfitting (high variance)</em> then you are right!<br/><b>Explanation:</b><br/>These methods can help the model generalize better to new examples that are not in the training set.</p>
+</details>
+
+#### Quiz 3
+
+<img src="../quizzes/Video%20quiz%2022%20-%20regularization.jpg" alt="video quiz 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>quiz 3</b></font>
+</summary>
+<p>If you have selected option <em>d (Decrease the size of parameters w<sub>1</sub>, w<sub>2</sub>, w<sub>3</sub>, ... w<sub>n</sub>)</em> then you are right!<br/><b>Explanation:</b><br/>Increasing the regularization parameter λ reduces overfitting by reducing the size of the parameters.  For some parameters that are near zero, this reduces the effect of the associated features.</p>
+</details>
+
+#### Quiz 4 [optional]
+
+<img src="../quizzes/Video%20quiz%2023%20-%20regularized%20linear%20regression%20gradient%20descent.jpg" alt="video quiz 4" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>quiz 4</b></font>
+</summary>
+<p>If you have selected option <em>a (The new part decreases the value of w<sub>j</sub> each iteration a little bit)</em> then you are right!<br/><b>Explanation:</b><br/>the new term decreases w<sub>j</sub> each iteration.</p>
+</details>
+
+#### Quiz 5
+
+<img src="../quizzes/Video%20quiz%2024%20-%20regularized%20logistic%20regression%20gradient%20descent.jpg" alt="video quiz 5" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>quiz 5</b></font>
+</summary>
+<p>If you have selected option <em>a (They look very similar, but the f(x) is not the same)</em> then you are right!<br/><b>Explanation:</b><br/>For logistic regression, f(x) is the sigmoid (logistic) function, whereas for linear regression, f(x) is a linear function.</p>
 </details>

@@ -11,11 +11,11 @@ This respository having all my notes of [Machine learning specialization](https:
 
 This specialization is having total of 3 courses in it.
 
-| S.no. | Course                                                     | Course link | My notes |
-|:-----:|------------------------------------------------------------|:-----------:|:--------:|
-| 1    | Supervised Machine Learning: Regression and Classification | [🔗](https://www.coursera.org/learn/machine-learning?specialization=machine-learning-introduction) | [🔗](./Supervised%20Machine%20Learning/) |
-| 2    | Advanced Learning Algorithms                               | [🔗](https://www.coursera.org/learn/advanced-learning-algorithms?specialization=machine-learning-introduction) | Added soon |
-| 3    | Unsupervised Learning and Recommender Systems              | [🔗](https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning?specialization=machine-learning-introduction) | Added soon |
+| S.no. | Course                                                     | Course link | My notes | Started on | Completed on |
+|:-----:|------------------------------------------------------------|:-----------:|:--------:|:----------:|:------------:|
+| 1    | Supervised Machine Learning: Regression and Classification | [🔗](https://www.coursera.org/learn/machine-learning?specialization=machine-learning-introduction) | [🔗](./Supervised%20Machine%20Learning/) | 11<sup>th</sup> July'22 |  1<sup>st</sup>Aug'22 |
+| 2    | Advanced Learning Algorithms                               | [🔗](https://www.coursera.org/learn/advanced-learning-algorithms?specialization=machine-learning-introduction) | Added soon |  soon | soon |
+| 3    | Unsupervised Learning and Recommender Systems              | [🔗](https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning?specialization=machine-learning-introduction) | Added soon | soon | soon |
 
 ---
 

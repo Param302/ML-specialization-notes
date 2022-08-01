@@ -11,7 +11,7 @@ This is 1st Course under Machine Learning Specialization by [Deeplearning.ai](ht
 |:-----:|------------------------------------------|:------:|:----------:|:------------------:|
 | 1     | Introduction to Machine Learning         | [🔗](./slides/Week%201%20-%20Intro%20to%20ML.pdf) | [🔗](./Week%201%20-%20Intro%20to%20ML/) | 18<sup>th</sup> July'22 |
 | 2     | Regression with multiple input variables | [🔗](./slides/Week%202%20-%20Regression%20with%20multiple%20input%20variables.pdf) | [🔗](Week%202%20-%20Regression%20with%20multiple%20input%20variables/) | 23<sup>rd</sup> July'22 |
-| 3     | Classification                           | [🔗](./slides/Week%203%20-%20Classification.pdf) | [🔗](./Week%203%20-%20Classification/) | soon |
+| 3     | Classification                           | [🔗](./slides/Week%203%20-%20Classification.pdf) | [🔗](./Week%203%20-%20Classification/) | 1<sup>st</sup> Aug'22 |
 
 - Codes [🔗](./codes/)
 - Quizzes [🔗](./quizzes/) (You can solve and submit too!)
