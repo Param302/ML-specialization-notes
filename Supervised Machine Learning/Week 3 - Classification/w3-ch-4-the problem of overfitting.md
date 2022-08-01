@@ -309,10 +309,10 @@ As we know:
 7.  And, our expression for $\frac{\partial}{\partial b}$ stays same as it is earlier, because we haven't added any extra term in _cost function_ for $b$ parameter.
 
 > So, final formula of **Regularized Gradient Descent** for **Linear Regression** is:
-> $$\text{repeat until convergence} \lbrace$$ 
-> $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right]$$ 
-> $$\enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$ 
-> $$\rbrace$$
+> $$\text{repeat until convergence} \lbrace \\
+> \enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right] \\
+> \enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right) \\
+> \rbrace$$
 
 ---
 
@@ -395,10 +395,10 @@ As we know:
 12. And, our expression for $\frac{\partial}{\partial b}$ stays same as it is earlier, because we haven't added any extra term in _cost function_ for $b$ parameter.
 
 > So, final formula of **Regularized Gradient Descent** for **Logistic Regression** is:
-> $$\text{repeat until convergence} \lbrace$$ 
-> $$\enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right]$$ 
-> $$\enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)$$ 
-> $$\rbrace$$
+> $$\text{repeat until convergence} \lbrace \\
+> \enspace\enspace\enspace\enspace w_j = w_j - \alpha\left[\frac{1}{m}\sum^m_{i=1}\left[\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right)x^{(i)}_j\right] + \frac{\lambda}{m}w_j\right] \\
+> \enspace b = b - \alpha\frac{1}{m}\sum^m_{i=1}\left(f_{\vec{w},b}(\vec{x}^{(i)}) - y^{(i)}\right) \\
+> \rbrace$$
 
 ---
 
