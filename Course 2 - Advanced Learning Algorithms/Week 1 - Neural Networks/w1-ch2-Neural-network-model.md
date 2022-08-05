@@ -118,12 +118,12 @@ The image we have $64$ pixels i.e. $8 \times 8$, in which all the all the pixel 
 4. In $1^{st}$ layer, we have total $25$ neurons.
 5. So, the computation of $1^{st}$ layer goes from $j = 1$ to $j = 25$.
 6. And, our formula will be:
-   $$\vec{a}^{[1]} = \begin{bmatrix} g\left(\vec{w}^{[1]}_1 \cdot \vec{x} + b^{[1]}_1\right) \\ \vdots \\ g\left(\vec{w}^{[1]}_{25} \cdot \vec{x} + b^{[1]}_{25}\right) \end{bmatrix}$$
+$$\vec{a}^{[1]} = \begin{bmatrix} g\left(\vec{w}^{[1]}_1 \cdot \vec{x} + b^{[1]}_1\right) \\ \vdots \\ g\left(\vec{w}^{[1]}_{25} \cdot \vec{x} + b^{[1]}_{25}\right) \end{bmatrix}$$
 
 7. In $2^{nd}$ layer, we have total $15$ neurons.
 8. So, the computation of $2^{nd}$ layer goes from $j = 1$ to $j = 15$.
 9. And, our formula will be:
-   $$\vec{a}^{[2]} = \begin{bmatrix} g\left(\vec{w}^{[2]}_1 \cdot \vec{a}^{[1]} + b^{[2]}_1\right) \\ \vdots \\ g\left(\vec{w}^{[2]}_{15} \cdot \vec{a}^{[1]} + b^{[2]}_{15}\right) \end{bmatrix}$$
+$$\vec{a}^{[2]} = \begin{bmatrix} g\left(\vec{w}^{[2]}_1 \cdot \vec{a}^{[1]} + b^{[2]}_1\right) \\ \vdots \\ g\left(\vec{w}^{[2]}_{15} \cdot \vec{a}^{[1]} + b^{[2]}_{15}\right) \end{bmatrix}$$
 
 10. In $3^{rd}$ layer which is an _output layer_, we have total $1$ neuron.
 11. The otuput of this **neural network** will be the probability of a _handwritten digit_ being $1$.
