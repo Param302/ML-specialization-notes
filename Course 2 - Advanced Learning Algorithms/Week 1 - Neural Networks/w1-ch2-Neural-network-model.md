@@ -143,8 +143,6 @@ The image we have $64$ pixels i.e. $8 \times 8$, in which all the all the pixel 
 
 ---
 
----
-
 ### Quizzes
 
 #### Practice Quiz: The problem of Overfitting
