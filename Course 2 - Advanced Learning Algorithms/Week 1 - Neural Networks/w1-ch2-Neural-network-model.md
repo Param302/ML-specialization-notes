@@ -145,7 +145,7 @@ $$\vec{a}^{[2]} = \begin{bmatrix} g\left(\vec{w}^{[2]}_1 \cdot \vec{a}^{[1]} + b
 
 ### Quizzes
 
-#### Practice Quiz: The problem of Overfitting
+#### Practice Quiz: Neural Network Model
 
 #### Question 1
 
