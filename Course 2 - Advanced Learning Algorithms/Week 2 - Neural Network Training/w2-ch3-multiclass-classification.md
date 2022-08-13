@@ -257,3 +257,278 @@ model.fit(X, Y, epochs=100)
 ```
 
 ---
+
+### Improved Implementation
+
+Earlier, in _logistic regression_ and _softmax regression_, we are computing the _activation_ value $a$ and passing that value to the _loss function_.
+
+But, we can modify it, by not computing the $a$ value before, instead computing value of $a$ inside the loss function.
+
+Because it will make some numerical round-off errors, because computers have a limit to calculate _float_ values.
+
+-   Example:
+    Let's say we have `x` and `x2` as:
+
+```python
+x = 2 / 10000
+x2 = 1 + (1 / 10000) - (1 - 1/10000)
+```
+
+Both `x` and `x2` are same, if we simplify them.
+
+-   if we compute `x`, we'll get:
+    $$x = \frac{2}{10000} = 0.0002$$
+
+-   But, if we compute `x2`, we'll get:
+    $$x2 = 1 + \left(\frac{1}{10000}\right) - \left(1 - \frac{1}{10000}\right) = 0.00019999999999997797$$
+
+We can see that there's a slight difference in result of `x` and `x2`, this is because computers has a precision (limit) to calculate _float_ values.
+
+So, to avoid this,
+
+-   _TensorFlow_ can rearrange terms in this expression and come up with a more numerically accurate way to compute this _loss function_.
+-   Whereas the original procedure was like insisting on computing as an intermediate value, $1 + \frac{1}{10000}$ and another intermediate value, $1 - \frac{1}{10000}$, then manipulating these two to get $\frac{2}{10,000}$.
+-   This partial implementation was insisting on explicitly computing $a$ as an intermediate quantity.
+-   But instead, by specifying the expression at the bottom directly as the _loss function_, it gives _TensorFlow_ more flexibility in terms of how to compute this and whether or not it wants to compute a explicitly.
+
+Now, let's see how the expression and code changes of _logistic regression_ and _softmax regression_.
+
+#### Logistic Regression
+
+-   In _Logistic regression_, we can rather computing $a$ first, we'll pass the expression to the _loss function_ which will compute it for us.
+    $$a = g(z) = \frac{1}{1 + e^{-z}}$$
+-   **Original** _Logistic loss function_:
+    $$loss = -y \log\left(a\right) - \left(1 - y\right) \log\left(1 - a\right)$$
+-   **Modified** _Logistic loss function_:
+    $$loss = -y \log\left(\frac{1}{1 + e^{-z}}\right) - \left(1 - y\right) \log\left(1 - \frac{1}{1 + e^{-z}}\right)$$
+
+New, modified _loss function_ will be more accurate then previous one, because it is not using $a$ as an intermediate value, rather it is computing it inside the loss function.
+
+-   Starter code:
+
+```python
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.losses import BinaryCrossentropy
+```
+
+-   In code, we'll change the _output_ layer's _activation_ function from _sigmoid_ to _linear_.
+
+```python
+model = Sequential([
+   Dense(25, activation="relu"),
+   Dense(15, activation="relu"),
+   Dense(2, activation="linear")
+])
+```
+
+-   And, then in `BinaryCrossentropy` _loss function_, we'll set `from_logits = True`.
+
+```python
+model.compile(loss=BinaryCrossentropy(from_logits=True))
+```
+
+-   What it does is, it will take the value $z$ in the _loss function_, as in _linear activation_ function, $g(z) = z$, and then compute it in the _loss function_ itself.
+
+-   Now, we'll fit the model
+
+```python
+model.fit(X, Y, epochs=100)
+logit = model(X_test)
+```
+
+-   To predict, model will compute the value of $z$ with _linear activation_ function.
+-   To get the _logistic regression_ prediction, we'll map the `logit` to _sigmoid_ function.
+
+```python
+preds = tf.nn.sigmoid(logit)
+```
+
+---
+
+#### Softmax Regression
+
+-   In _Softmax regression_, same as above, rather computing $a$ first, we'll pass the expression to the _loss function_ which will compute it for us.
+
+-   **Original** _loss function_:
+    $$loss(a_1,...a_n) = \begin{cases} - \log a_1\quad\text{if } y = 1 \\ -\log a_2\quad\text{if }y = 2 \\ \qquad\qquad\vdots \\ - \log a_N\quad\text{if } y = N\end{cases}$$
+-   **Modified** _loss function_:
+    $$loss(a_1,...a_n) = \begin{cases} - \log \frac{e^{z_1}}{\sum_{k=1}^{N}e^{z_k}}\quad\text{if } y = 1 \\ -\log \frac{e^{z_2}}{\sum_{k=1}^{N}e^{z_k}}\quad\text{if }y = 2 \\ \qquad\qquad\vdots \\ - \log \frac{e^{z_j}}{\sum_{k=1}^{N}e^{z_k}}\quad\text{if } y = N\end{cases}$$
+
+-   In new _modified loss function_, we are computing $a$ inside the _loss function_, not computing it first.
+
+-   Starter code:
+
+```python
+import tensorflow as tf
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.losses import SparseCategoricalCrossentropy
+```
+
+-   In code, we'll change the _output_ layer's _activation_ function from _softmax_ to _linear_.
+
+```python
+model = Sequential([
+   Dense(25, activation="relu"),
+   Dense(15, activation="relu"),
+   Dense(10, activation="linear")
+])
+```
+
+-   And, then in `SparseCategoricalCrossentropy` _loss function_, we'll set `from_logits = True`.
+
+```python
+model.compile(loss=SparseCategoricalCrossentropy(from_logits=True))
+```
+
+-   Now, _loss function_ will compute $a$ inside the _loss function_.
+
+-   Now, we'll fit the model
+
+```python
+model.fit(X, Y, epochs=100)
+logit = model(X_test)
+```
+
+-   Now, to predict, model will compute the value of $z$ with _linear activation_ function.
+-   To get the _softmax regression_ prediction, we'll map the `logit` to _softmax_ function.
+
+```python
+preds = tf.nn.softmax(logit)
+```
+
+---
+
+### Multi-label Classification
+
+In _Multi-label classification_, we used to _classify_ different classes for different labels (_targets_).
+
+In _Multi-class classification_, we have a single label in which we _classify_ different classes, whereas, in _Multi-label classification_, we have multiple labels (_target features_) in which we _classify_ different classes.
+
+#### Example:
+
+Let's say we have an image, and we want to classify whether there is/are:
+
+-   A Car
+-   A Bus
+-   A Human
+-   A pedestrian
+
+| Question         |                                 Image $1$                                  |                                 Image $2$                                  |                                 Image $3$                                  |
+| :--------------- | :------------------------------------------------------------------------: | :------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| **_Is there a_** | <img src="./images/multi_label_example_1.jpg" alt="image 1" width="300px"> | <img src="./images/multi_label_example_2.jpg" alt="image 2" width="300px"> | <img src="./images/multi_label_example_3.jpg" alt="image 3" width="300px"> |
+| **Car ?**        |                                   Yes ✅                                   |                                   No ❌                                    |                                   Yes ✅                                   |
+| **Bus ?**        |                                   No ❌                                    |                                   No ❌                                    |                                   Yes ✅                                   |
+| **Human ?**      |                                   Yes ✅                                   |                                   Yes ✅                                   |                                   No ❌                                    |
+| **Pedestrian ?** |                                   No ❌                                    |                                   Yes ✅                                   |                                   Yes ✅                                   |
+
+By the type of questions, we can see that all these $4$ labels are type of _Classification_ problem or mainly _Binary classification_.
+
+So, we can interpret output $y$ of each Image as:
+
+-   **Image 1**:
+    $\quad y = \begin{bmatrix}1 \\ 0 \\ 1 \\ 0\end{bmatrix}$
+
+-   **Image 2**:
+    $\quad y = \begin{bmatrix}0 \\ 0 \\ 1 \\ 1\end{bmatrix}$
+
+-   **Image 3**:
+    $\quad y = \begin{bmatrix}1 \\ 1 \\ 0 \\ 1\end{bmatrix}$
+
+where, $1$ is _Yes_ and $0$ is _No_.
+
+---
+
+### Neural Network for Multi-label Classification
+
+#### Separate Neural Networks
+
+$1^{st}$ way to create a **neural network** for _multi-label classification_ is creating separate **neural networks** for separate labels.
+
+So, for each label, we'll have a separate **neural network**.
+
+<img src="./images/car_nn.jpg" alt="car neural network" width="500px" style="padding:10px">
+<img src="./images/bus_nn.jpg" alt="bus neural network" width="500px" style="padding:10px">
+<img src="./images/human_nn.jpg" alt="human neural network" width="500px" style="padding:10px">
+<img src="./images/pedastrian_nn.jpg" alt="pedastrian neural network" width="500px" style="padding:10px">
+
+And each **neural network** will compute the output $y$ for each label.
+
+---
+
+#### Single Neural Network
+
+Another way to create a **neural network** for _multi-label classification_ is creating a _single_ **neural network**, which computes all the outputs $y$ for all the labels.
+
+So, our **neural network** architecture will look like this:
+
+<img src="./images/multi_label_nn.jpg" alt="mult-label neural network" width="600px" style="padding:10px">
+
+Where, in the _output_ layer, for each neuron, we are using _sigmoid_ as an _activation_ function because this is a _binary classification_ problem.
+
+And the vector $\vec{a}^{[3]}$ consists of all the outputs $y$ of all the labels.
+
+$$\vec{a}^{[3]} = \begin{bmatrix}a^{[3]}_1 \\ \\ a^{[3]}_2 \\ \\ a^{[3]}_3 \\ \\ a^{[3]}_4 \end{bmatrix}$$
+
+Where:
+
+-   $1^{st}$ _activation_ value $a^{[3]}_1$ has the output for _car_ label.
+-   $2^{nd}$ _activation_ value $a^{[3]}_2$ has the output for _bus_ label.
+-   $3^{rd}$ _activation_ value $a^{[3]}_3$ has the output for _human_ label.
+-   $4^{th}$ _activation_ value $a^{[3]}_4$ has the output for _pedastrian_ label.
+
+---
+
+### Jupyter lab: Softmax [🔗](../codes/W2%20-%20L2%20-%20Softmax.ipynb)
+
+---
+
+### Jupyter lab: Multiclass [🔗](../codes/W2%20-%20L3%20-%20Multiclass.ipynb)
+
+---
+
+### Quizzes
+
+#### Practice Quiz: Tensorflow Implementation
+
+#### Question 1
+
+<img src="../quizzes/Quiz%207%20-%20multiclass%20classification%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>a (1)</em> then you are right!<br/><b>Explanation:</b><br/>Yes! The sum of all the softmax activations should add up to 1.</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%207%20-%20multiclass%20classification%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you selected options <em>b (-log(a<sub>3</sub>)</em> then you are right!<br/><b>Explanation:</b><br/>Correct. When the true label is 3, then the cross entropy loss for that training example is just the negative of the log of the activation for the third neuron of the softmax. </p>
+</details>
+
+#### Question 3
+
+<img src="../quizzes/Quiz%207%20-%20multiclass%20classification%20q3.jpg" alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>b (a 'linear' activation)</em> then you are right!<br/><b>Explanation:</b><br/>Yes! Set the output as linear, because the loss function handles the calculation of the softmax with a more numerically stable method.</p>
+</details>
+
+### Video quiz 1
+
+<img src="../quizzes/Video%20quiz%203%20-%20softmax%20function.jpg" alt="practice quiz question 3" height="700px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>video quiz 1</b></font>
+</summary>
+<p>If you have selected option <em>a (0.35)</em> then you are right!<br/><b>Explanation:</b><br/>We know the sum of probability is 1, so 1 - (0.30 + 0.20 + 0.15) = 1 - 0.65 = 0.35.</p>
+</details>
