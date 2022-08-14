@@ -224,7 +224,7 @@ $$z = \vec{w}^{[4]}_1 \cdot \vec{a}^{[3]} + b^{[4]}_1$$
 
 ### Quizzes
 
-#### Practice Quiz: Tensorflow Implementation
+#### Practice Quiz: Activation Functions
 
 #### Question 1
 

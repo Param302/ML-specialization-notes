@@ -491,7 +491,7 @@ Where:
 
 ### Quizzes
 
-#### Practice Quiz: Tensorflow Implementation
+#### Practice Quiz: Multiclass Classification
 
 #### Question 1
 

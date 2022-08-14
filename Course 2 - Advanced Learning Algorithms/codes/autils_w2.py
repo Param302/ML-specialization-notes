@@ -12,8 +12,8 @@ plt.style.use('./deeplearning.mplstyle')
 
 
 def load_data():
-    X = np.load("data/X.npy")
-    y = np.load("data/y.npy")
+    X = np.load("data/X_w2.npy")
+    y = np.load("data/y_w2.npy")
     return X, y
 
 def plt_act_trio():
@@ -200,4 +200,15 @@ def display_digit(X):
     X_reshaped = X.reshape((20,20)).T
     # Display the image
     ax.imshow(X_reshaped, cmap='gray')
+    plt.show()
+
+def plot_loss_tf(history):
+    fig,ax = plt.subplots(1,1, figsize = (4,3))
+    widgvis(fig)
+    ax.plot(history.history['loss'], label='loss')
+    ax.set_ylim([0, 2])
+    ax.set_xlabel('Epoch')
+    ax.set_ylabel('loss (cost)')
+    ax.legend()
+    ax.grid(True)
     plt.show()
