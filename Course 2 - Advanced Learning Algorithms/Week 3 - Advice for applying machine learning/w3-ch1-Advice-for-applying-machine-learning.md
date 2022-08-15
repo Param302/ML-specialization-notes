@@ -78,12 +78,15 @@ Say, we have $10$ data points here:
 - In notation, we'll use $m_{train}$ to signify *training* examples like $x^{m_{train}}$ & $y^{m_{train}}$ and $m_{test}$ to signify *testing* examples like $x^{m_{test}}$ & $y^{m_{test}}$.
 
 - To train our model, we'll fit the *training* dataset with the *polynomial* features as shown above and minimize it's cost with *cost function* $J(\vec{w}, b)$.
+
 $$J(\vec{w}, b) = \frac{1}{2m_{train}}\sum^{m_{train}}_{i=1}\left(f_{\vec{w}, b}(\vec{x}^{(i)}) - y^{(i)}\right)^2 + \frac{\lambda}{2m_{train}}\sum^n_{j=1}w^2_j$$
 
 - To find the *training* error, we'll use same *cost function* $J(\vec{w}, b)$ on $m_{train}$ training examples, except we won't use *regularization* term.
+
 $$J_{train}(\vec{w}, b) = \frac{1}{2m_{train}}\left[\sum^{m_{train}}_{i=1}\left(f_{\vec{w}, b}(\vec{x}^{(i)}_{train}) - y^{(i)}_{train}\right)^2\right]$$
 
 - And, To compute the *test* error, we'll use same *cost function* $J(\vec{w}, b)$ on $m_{test}$ testing examples as above.
+
 $$J_{test}(\vec{w}, b) = \frac{1}{2m_{test}}\left[\sum^{m_{test}}_{i=1}\left(f_{\vec{w}, b}(\vec{x}^{(i)}_{test}) - y^{(i)}_{test}\right)^2\right]$$
 
 - So, as we saw that, on *training* dataset, our model performs well.
@@ -111,9 +114,11 @@ $$J(\vec{w}, b) = -\frac{1}{m}\sum^m_{i=1}\left[y^{(i)}\log\left(f_{\vec{w}, b}(
 $$J_{train}(\vec{w}, b) = -\frac{1}{m_{train}}\sum^{m_{train}}_{i=1}\left[y^{(i)}_{train}\log\left(f_{\vec{w}, b}(\vec{x}^{(i)}_{train}\right) + \left(1 - y^{(i)}_{train}\right)\log\left(1 - f_{\vec{w}, b}(x^{(i)}_{train}\right)\right]$$
 
 - For computing error on *testing dataset*, we'll use same *cost function* $J(\vec{w}, b)$ on $m_{test}$ testing examples as above.
+
 $$J_{test}(\vec{w}, b) = -\frac{1}{m_{test}}\sum^{m_{test}}_{i=1}\left[y^{(i)}_{test}\log\left(f_{\vec{w}, b}(\vec{x}^{(i)}_{test}\right) + \left(1 - y^{(i)}_{test}\right)\log\left(1 - f_{\vec{w}, b}(x^{(i)}_{test}\right)\right]$$
 
 - But, there's another way to find error on *training* and *testing* dataset is to find out the **fraction** of the *test* and *train* set which is miss-classified.
+
 $$hat{y} = \begin{cases}1 \quad\text{if }f_{\vec{w}, b}(x^{(i)}) \ge 0.5 \\ 0 \quad\text{if }f_{\vec{w}, b}(x^{(i)}) < 0.5\end{cases}$$
 
 - And, we'll count $\hat{y} \neq y$ as error.
