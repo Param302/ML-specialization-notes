@@ -262,7 +262,7 @@ So, we will create $3$ different models, with different no. of _hidden layers_ a
 
 ### Quizzes
 
-#### Practice Quiz: Tensorflow Implementation
+#### Practice Quiz: Advice for Applying Machine Learning
 
 #### Question 1
 
