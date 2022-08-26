@@ -266,7 +266,7 @@ So, we will create $3$ different models, with different no. of _hidden layers_ a
 
 #### Question 1
 
-<img src="../Quizzes/Quiz%209%20-%20Advice%20for%20ml%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<img src="../quizzes/Quiz%209%20-%20Advice%20for%20ml%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
 <details>
 <summary>    
     <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
@@ -277,7 +277,7 @@ A test that you run to gain insight into what is/isn’t working with a learning
 
 #### Question 2
 
-<img src="../Quizzes/Quiz%209%20-%20Advice%20for%20ml%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<img src="../quizzes/Quiz%209%20-%20Advice%20for%20ml%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
 <details>
 <summary>    
     <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
@@ -287,7 +287,7 @@ A test that you run to gain insight into what is/isn’t working with a learning
 
 #### Question 3
 
-<img src="../Quizzes/Quiz%209%20-%20Advice%20for%20ml%20q3.jpg"  alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<img src="../quizzes/Quiz%209%20-%20Advice%20for%20ml%20q3.jpg"  alt="practice quiz question 3" width="70%" style="min-width: 850px">
 <details>
 <summary>    
     <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
