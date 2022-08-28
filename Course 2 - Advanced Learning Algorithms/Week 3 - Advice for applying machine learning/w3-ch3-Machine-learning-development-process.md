@@ -221,3 +221,129 @@ $$\text{AI} = \text{Code } + \underbrace{\text{ Data}}_{\text{main focus}}$$
 -   So, we should also spend some time with data.
 
 ---
+
+### Transfer learning
+
+> **Transfer learning** is a machine learning method where a model developed for a task is reused as the starting point for a model on a second task. ~ [_Json Brownlee_ - ML Mastery](https://machinelearningmastery.com/transfer-learning-for-deep-learning/#:~:text=Transfer%20learning%20is%20a%20machine%20learning%20method%20where%20a%20model%20developed%20for%20a%20task%20is%20reused%20as%20the%20starting%20point%20for%20a%20model%20on%20a%20second%20task)
+>
+> Transfer learning is a machine learning technique where a model trained on one task is re-purposed on a second related task. [_Json Brownlee_ - ML Mastery](https://machinelearningmastery.com/transfer-learning-for-deep-learning/#:~:text=Transfer%20learning%20is%20a%20machine%20learning%20technique%20where%20a%20model%20trained%20on%20one%20task%20is%20re%2Dpurposed%20on%20a%20second%20related%20task.)
+
+In **Transfer learning**, we trained our model on different task and use it's parameters (weights) in new model to solve actual task.
+
+#### Hand-written Digit Recognition
+
+Let's say we want to make a **neural network** which identifies the _Hand-written digit_ from $0$ to $9$.
+
+And, we have small amount of data, i.e. very less _Hand-written digit_ labelled images.
+
+So, in **Transfer learning**, what we do is:
+
+1. We'll take another dataset of recognizing several different things.
+2. This dataset we have is very large, like a million images.
+3. And, we have to predict $1,000$ different classes from it.
+4. It can be _Cats, dogs, cars, people, street, dustbin_ etc... $1,000$ different things.
+5. So, we'll make a **neural network** on this dataset.
+6. Say, we made a $4$ layer **neural network** like this:
+
+<img src="./images/transfer_learning_1.jpg" alt="transfer learning class recognition" width="500px" style="padding:10px 50px">
+
+6. So, we will train this **neural network**, and save it's parameters, $w^{[1]}, b^{[1]}$ to $w^{[4]}, b^{[4]}$.
+7. And, for our _Hand-written digit recognition_ task, we use these parameters to train our **neural network**.
+8. But, for the last layer, i.e. _output_ layer, we will train our model and use new parameters i.e. $w^{[5]}, b^{[5]}$.
+9. Because, in _Class recognition_ **neural network**, we have $1,000$ different classes to predict on.
+10. But, in _Hand-written digit recognition_ **neural network**, we have only $10$ different classes, i.e from digit $0$ to $9$.
+11. So, our **neural network** will look like this:
+
+<img src="./images/transfer_learning_2.jpg" alt="transfer learning hand written digit recognition" width="500px" style="padding:10px 50px">
+
+Here, we have $2$ options, with which we can go:
+
+1. Only train _output_ layer parameters i.e. $w^{[5]}, b^{[5]}$.
+2. Train all the parameters from $w^{[1]}, b^{[1]}$ to $w^{[5]}, b^{[5]}$.
+
+-   We can go with option $1$, if we have a small dataset.
+-   If we choose option $2$, then we'll initialize our parameters with the saved weights of previous model.
+
+> #### Supervised Pre-training
+>
+> Training a model on large dataset and tuning it's parameter further on new model for small dataset is called _Supervised pre-training_.
+
+> #### Fine Tuning
+>
+> When we initialize the paramters of new model from the pre-trained model paramters and run new model and tune the parameters according to the application is called _Fine Tuning_.
+
+---
+
+#### Transfer Learning Intuition
+
+If we are training a **neural network** on _Image recognition_ application, then it will learn like this:
+
+1. $1^{st}$ layer will learn to detect edges in the image.
+
+<img src="./images/edges.jpg" alt="edges" width="300px" style="padding:10px 50px">
+
+2. $2^{nd}$ layer will learn to detect corners in the image.
+
+<img src="./images/corners.jpg" alt="corners" width="300px" style="padding:10px 50px">
+
+3. $3^{rd}$ layer will learn to detect curves and basic shapes in the image.
+
+<img src="./images/shapes.jpg" alt="shapes" width="300px" style="padding:10px 50px">
+
+4. And, with lots of different images, it will learn to detect corners, edges and shapes in the images.
+
+<img src="./images/transfer_learning_3.jpg" alt="neural network image recognition" width="500px" style="padding:10px 50px">
+
+5. With this, our model will learn how to find corners, edges and shapes.
+
+-   One important thing to remember while doing **Transfer learning** is that both the models should be doing same type of task.
+-   If we want to do _Image recognition_ task, then the pre-trained model should also be doing _Image recognition_ task.
+-   If we are doing _Speech recognition_ task, then the pre-trained whose weights we are using should also some kind of voice related task.
+
+> Famous ML models like **GPT-3** and **BERT** also using **Transfer learning** i.e., they are using pre-trained models and feeding them new data to do predictions.
+
+---
+
+### Full Cycle of a Machine Learning Project
+
+So, till now we have discussed about the Iterative loop of ML, how to get data and how to do error analysis.
+
+Now, we will see and understand the full cycle of ML project.
+
+This is the full cycle of ML project:
+
+<img src="./images/ml-project-cycle.jpg" alt="ml project cycle" width="800px" style="padding:10px">
+
+Let's understand each step with the example of _Speech Recognition_ project
+
+#### $1^{st}$ step - Scope of project
+
+-   $1^{st}$ step is **scope of project**, i.e. define the project, what is the project we are going to make.
+-   Let's say we are working on _Speech Recognition_ project.
+
+#### $2^{nd}$ step - Collect data
+
+-   $2^{nd}$ step is to **collect the data**.
+-   We will find what type of data we need ?
+-   How do we collect the data ?
+-   How much data we need ?
+-   For _Speech Recognition_ project, we need audio data and it's transcript.
+
+#### $3^{rd}$ step - Train model
+
+-   $3^{rd}$ step is to **train the model**.
+-   After we have collected the data, we will _train_ our model.
+-   And, we will do _error analysis_, analyze _learning curve_, check for _Bias_ and _Variance_.
+-   So, here we will do all the steps in _Iterative loop of ML model development_.
+
+<img src="./images/ml-development.jpg" alt="ml development process" width="400px" style="padding:10px 50px">
+
+-   Here, if we found that our model is not working properly, then we try different approaches to improve, so we may have to go back to $2^{nd}$ step - Collect data, if it's **High Variance**, then it helps.
+
+-   For _Speech Recognition_ project, we will train our model by passing _audio_ as input $\vec{X}$ and it's transcript as target variable $y$.
+
+-   Say, we trained out model, but it is not recognizing our voice properly
+
+#### $4^{th}$ step - Deploy in Production
+
+---
