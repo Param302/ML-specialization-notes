@@ -346,4 +346,79 @@ Let's understand each step with the example of _Speech Recognition_ project
 
 #### $4^{th}$ step - Deploy in Production
 
+-   $4^{th}$ step is to **deploy the model in production environment**.
+-   It means, that the model which we have made, now available it for users to use.
+-   When we deploy the model, we need to keep it maintain.
+-   So, we need to check it's performance time to time, and when it's performance decreased, then we go back to step $3$ to train the model again.
+-   Or, sometimes, if some new kind of data come on which our model performs really poor, then we have to go back to step $2$ to collect the data and then train it.
+-   For _Speech Recognition_ project, we can make a mobile app, where we deploy it and let users to our _Speech Recognition_ project.
+-   If some kind of new voice used in the model, and it performs poorely on that, then we need to add more data.
+
 ---
+
+### Deployment
+
+After we have trained our model, we need to deploy it so that other users can use it.
+
+Let's see how this whole deployment process works:
+
+<img src="./images/model-deployment.jpg" alt="model deployment process" width="500px" style="padding:10px">
+
+-   To deploy it, we can make a server, we can call it as _Inference server_.
+-   Say, we have a mobile app in which users are using this model.
+-   So, to connect our model with mobile app we can make API.
+-   And, do API calls by providing the input on which model do the predictions and return it.
+-   For _Speech Recognition_ project, we can do API call by passing the voice as input.
+-   And our _Speech Recognition_ model will predict it's transcript and outputs it to the mobile app.
+
+So, for all this process, we need some **Software Engineering**, let's look into it.
+
+How much **Software Engineering** is needed is depends upon the amount of users using our service.
+
+Some common things to consider are:
+
+#### 1. Ensure reliable and efficient predictions
+
+-   We need to ensure that our model is reliable and efficient, means it doesn't take so much time to do predictions and it should be computationally efficient.
+-   If it takes too long then the user may not use it.
+-   If it takes less time, then the user will be happy and they will use it more and more.
+
+#### 2. Scaling
+
+-   **Software Engineering** maybe needed for scaling our model.
+-   Like if so many users are using our model, then the server may go down because of high API requests.
+-   So, we need to ensure that it handles large number of users efficiently.
+
+#### 3. Logging
+
+-   We also need to log the input data and predictions to maintain our model.
+-   But, we also need to ensure the user's privacy while logging their information with their consent.
+
+#### 4. System monitoring
+
+-   The data which we have logged, is also be useful for monitoring our model.
+-   How's our model is performing ?
+-   Where it's accuracy decreased ?
+
+#### 5. Model updates
+
+-   By monitoring, we can see our model's performance.
+-   And, we need to update it time to time.
+-   Means, train the model on new data would be useful.
+-   Imagine, we have made a _Shoe Classification_ and _Nike_ has launched a new shoe in the market, which our model is not recognizing.
+-   So, we need to re-train our model with that shoe images also.
+
+> The deployment process can require some amounts of software engineering. For some applications, if you're just running it on a laptop or on a one or two servers, maybe not that much software engineering is needed. Depending on the team you're working on, it is possible that you built the machine learning model but there could be a different team responsible for deploying it. ~ _Andrew Ng_
+
+> #### MLOps
+>
+> It stands for **_Machine Learning Operations_**.
+>
+> It refers to the practice of how to systematically build and deploy and maintain machine learning systems.
+>
+> To do all of these things to make sure that your machine learning model is reliable, scales well, has good laws, is monitored, and then you have the opportunity to make updates to the model as appropriate to keep it running well.
+>
+> For example, if you are deploying your system to millions of people you may want to make sure you have a highly optimized implementations so that the compute cost of serving millions of people is not too expensive.
+
+---
+
