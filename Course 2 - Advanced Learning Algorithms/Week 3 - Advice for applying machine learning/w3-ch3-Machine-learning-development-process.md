@@ -422,3 +422,126 @@ Some common things to consider are:
 
 ---
 
+### Fairness, Bias and Ethics
+
+While building a machine learning model, we need to make sure that our model is fair, free from bias.
+
+There were some issues occured related to fairness, bias and ethics in ML industry.
+
+Let's see some of them:
+
+### Bias issues
+
+#### 1. **Hiring tool** that descriminate against women.
+
+-   In 2014, Amazon built a a hiring tool which uses AI (ML) to rate job candidates, but it started descrimination on women candidates. It automatically rejecting resumes consisting "women" words.
+
+-   Full article [link](https://slate.com/business/2018/10/amazon-artificial-intelligence-hiring-discrimination-women.html)
+
+#### 2. **Facial Recognition** systems matching dark skinned individuals to criminal mugshots.
+
+-   In past years, there some **Face Recognition** systems were built who considered dark skinned individuals as criminals. [link](https://sitn.hms.harvard.edu/flash/2020/racial-discrimination-in-face-recognition-technology/#:~:text=Face%20recognition%20in%20racial%20discrimination%20by%20law%20enforcement)
+
+#### 3. Biased bank loan approvals.
+
+-   Approving loan to those who invest more in the back.
+
+#### 4. Toxic effect of reinforcing negative streotypes
+
+-   Imposing and recommending only a specific type of content.
+
+---
+
+### Adverse Use cases
+
+There've also been some adverse use cases of Machine learning.
+
+Let's see some of them:
+
+#### 1. Deepfakes without of user's consent
+
+<img src="./images/deepfake.jpg" alt="deep fake" width="300px" style="padding:10px">
+
+-   Deepfakes are synthetic media in which a person in an existing image or video is replaced with someone else's likeness ~ [_Wikipedia_](https://en.wikipedia.org/wiki/Deepfake)
+-   A very popular video of a person doing deep fake of Barack Obama.
+-   Using this technology to generate fake videos without user's consent is unethical.
+
+#### 2. Spreading toxic/incendiary speech through optimizing for engagement.
+
+-   Like there's a lot of news about facebook promoting voilence using their AI. [link](https://timesofindia.indiatimes.com/business/india-business/how-facebooks-algorithm-led-a-new-india-user-to-fake-news-violence/articleshow/87250610.cms)
+
+#### 3. Generating fake content for commerical or political purposes
+
+-   Making fake ids on social media platforms and inpersonating others ans spreading fake content. [link](https://journals.sagepub.com/doi/10.1177/2056305120963824)
+
+#### 4. Using ML to build harmful products, commit fraud etc...
+
+-   Making ML models to do frauds, and do spam.
+
+> #### So for goodness sakes please don't build a machine learning system that has a negative impact on society. And if you are asked to work on an application that you consider unethical, I urge you to walk away for what it's worth. ~ _Andrew Ng_
+
+---
+
+### Guidelines by Andrew Ng
+
+Some suggestions by **Andrew Ng** to make ML model more fair, less baised and more ethical before deploying a system that could create harm.
+
+#### 1. Get a diverse team to brainstorm things that might go wrong, with emphasis on possible harm to vulnerable groups.
+
+-   Like for collecting images for face recognition, have a diverse team ranging from gender, culture and race so we can get a very diverse variety of data.
+-   Also there's a variety of ideas can be found with diverse team.
+
+#### 2. Carry out literature search on standards/guidelines for your industry.
+
+-   Like, In Finanical industry, how the systems are approved on what basis/standards, finanical softwares are being used.
+
+#### 3. Audit systems against possible harm prior to development.
+
+-   After training the model, before deploying the model, if your team found any kind of bias in the system, we can audit the system to measure the system, that is it doing some kind of bias or not, then fixes the indentified problems.
+
+#### 4. Develop mitigation plan and after deployment, monitor for possible harm.
+
+-   We can make a mitigation plan, like a roll back to the system which was fair.
+-   We can also monitor the harm, after deployment to detect any kind of bias or unethical thing.
+-   Like in Self Driving cars, there is a mitigation plan, if a car involve in an accident, then they can roll back to that mitigation plan, rather than got scrambled afte car accident.
+
+> I've worked on many machine learning systems and let me tell you the issues of ethics, fairness and bias issues we should take seriously. It's not something to brush off. It's not something to take likely.
+>
+> Now of course, there's some projects with more serious ethical implications than others. For example, if I'm building a neural network to decide how long to roast my coffee beans, clearly, the ethical implications of that seems significantly less than if, say you're building a system to decide what loans. Bank loans are approved, which if it's buyers can cause significant harm. ~ _Andrew Ng_
+
+---
+
+### Quizzes
+
+#### Practice Quiz: Advice for Applying Machine Learning
+
+#### Question 1
+
+<img src="..\quizzes\Quiz%2011%20-%20ML%20development%20process%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>d (
+Manually examine a sample of the training examples that the model misclassified in order to identify common traits and trends.)</em> then you are right!<br/><b>Explanation:</b><br/>Correct. By identifying similar types of errors, you can collect more data that are similar to these misclassified examples in order to train the model to improve on these types of examples.</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%2011%20-%20ML%20development%20process%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>b (Data augmentation)</em> then you are right!<br/><b>Explanation:</b><br/>Yes! Modifying existing data (such as images, or audio) is called data augmentation.</p>
+</details>
+
+#### Question 3
+
+<img src="../quizzes/Quiz%2011%20-%20ML%20development%20process%20q3.jpg"  alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you selected options <em>3<sup>rd</sup> and 4<sup>th</sup></em> then you are right!<br/><b>Explanation:</b><br/>Correct. It may help to train all the layers of the model on your own training set. This may take more time compared to if you just trained the parameters of the output layers.</br>Correct. The earlier layers of the model may be reusable as is, because they are identifying low level features that are relevant to your task.</p>
+</details>
