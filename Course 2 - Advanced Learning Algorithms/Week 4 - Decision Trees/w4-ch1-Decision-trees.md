@@ -216,3 +216,25 @@ There are several ways to do it.
 > Again, it can prone to _overfitting_ and a larger tree size, means more depth.
 
 ---
+
+#### Practice Quiz: Decision Trees
+
+#### Question 1
+
+<img src="../quizzes/Quiz%2012%20-%20Decision%20trees%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>a (Cat)</em> then you are right!<br/><b>Explanation:</b><br/>Correct. If you follow the floppy ears to the right, and then from the whiskers decision node, go left because whiskers are present, you reach a leaf node for "cat", so the model would predict that this is a cat.</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%2012%20-%20Decision%20trees%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>b (Left split: 10 of 10 emails are spam. Right split: 0 of 10 emails are spam. )</em> then you are right!</p>
+</details>
