@@ -243,3 +243,118 @@ Now, let's see these steps with the _Cat Classification_ example:
 -   If we notice it, it's like a \*_Recursive Algorithm_.
 
 ---
+
+### One Hot Encoding
+
+In *Cat Classification* example, we have this data:
+
+<img src="./images/cat-data.jpg" alt="cat data" width="1000px" style="padding:10px">
+
+- But, let's say, now rather tha having $2$ values in *Ear Shape*, we will have $3$ values:
+- - *Pointy*
+- - *Floppy*
+- - *Oval*
+
+<img src="./images/oh-encoding.jpg" alt="cat new data" width="1000px" style="padding:10px">
+
+- So, now we'll have a node for *Ear Shape* with $3$ values.
+- But we can transform this data, especially this feature so that in our tree we don't have any node with more than $2$ values.
+
+- We are going to use **One Hot Encoding**.
+
+> In **One Hot Encoding**, we encode the column(s) in $1$ and $0$ format, if it has $2$ values or we make separate columns for all unique values in a column with $1$ indicating presence of that value and $0$ indicating absence of that value.
+
+- So, after doing **One Hot Encoding**, our dataset will be:
+
+<img src="./images/oh-encoding-1.jpg" alt="cat one hot encoded data" width="1000px" style="padding:10px">
+
+- Having $1$ in *Pointy ears* for those rows which has *Pointy* as value in *Ear Shape*, and similarly for *Floppy* and *Oval*.
+- Now, we can make **Decision Tree** on this dataset more easily.
+
+
+---
+
+- But, still we can't use this dataset for **neural networks** or **logistic regression**.
+- For that, we need to transform other $2$ features too!
+- So, for *Face Shape* and *Whiskers* feature, we can also do **One Hot Encoding**, where:
+- - replace *Round* with $1$ and *Not round* with $0$.
+- - Similarly, *Present* with $1$ and *Absent* with $0$.
+
+<img src="./images/oh-encoding-2.jpg" alt="cat fully one hot encoded data" width="1000px" style="padding:10px">
+
+---
+
+### Continuous Valued Features
+
+Let's say now we have another column named *Weights* on *Cat Classification* example.
+
+So, our dataset is like this:
+
+<img src="./images/cat-weight-feature.jpg" alt="cat weight data" width="1000px" style="padding:10px">
+
+- Notice, the weight column is having continuous values.
+- Conversely, other features has discrete set of values.
+
+Now, the question is - How we can split the *Weight* feature ?
+
+- Let's plot the data on a *scatter plot* where:
+- - *weight* is on $x$-axis
+- - *Cat* (target variable) is on $y$-axis
+
+<img src="./images/cat-weight-graph-1.jpg" alt="weight graph" width="500px" style="padding:10px 50px">
+
+- What we can do is,
+- We can make different *thresholds* here, and split data on them and find *Information Gain*, and which one has highest, we'll choose that *threshold* value.
+- First, let's say we choose $8$, so on $8$ we split our *weight* feature based on whether the weight is greater or less than $8 lbs.$ on not and calculate *Information Gain*.
+
+<img src="./images/cat-weight-graph-2.jpg" alt="weight 8 lbs graph" width="500px" style="padding:10px 50px">
+
+- So, let's say the *Information Gain* is $0.24$.
+
+$$H(0.5) = \left(\frac{2}{10}H\left(\frac{2}{2}\right) + \frac{8}{10}H\left(\frac{3}{8}\right)\right) = 0.24$$
+- where:
+$$w^{left} = \frac{2}{10} \qquad w^{right} = \frac{8}{10}$$
+$$p_1^{left} = \frac{2}{2} \qquad p_2^{right} = \frac{3}{8}$$
+
+- Similarly, now let's take *threshold* as $13$ and plot it and find *Information Gain* with it.
+
+<img src="./images/cat-weight-graph-3.jpg" alt="weight 13 lbs graph" width="500px" style="padding:10px 50px">
+
+
+- Say, we got an *Information Gain* of $0.40$
+
+$$H(0.5) = \left(\frac{7}{10}H\left(\frac{5}{7}\right) + \frac{3}{10}H\left(\frac{0}{3}\right)\right) = 0.40$$
+- where:
+$$w^{left} = \frac{7}{10} \qquad w^{right} = \frac{3}{10}$$
+$$p_1^{left} = \frac{5}{7} \qquad p_2^{right} = \frac{0}{3}$$
+- This time, *Information Gain* is higher than previous one.
+
+
+- let's now try with one more value of *threshold* i.e. $9$ and plot it and find *Information Gain* with it.
+
+<img src="./images/cat-weight-graph-4.jpg" alt="weight 9 lbs graph" width="500px" style="padding:10px 50px">
+
+- Say, we got an *Information Gain* of $0.61$.
+
+$$H(0.5) = \left(\frac{4}{10}H\left(\frac{4}{4}\right) + \frac{6}{10}H\left(\frac{1}{6}\right)\right) = 0.40$$
+- where:
+$$w^{left} = \frac{4}{10} \qquad w^{right} = \frac{6}{10}$$
+$$p_1^{left} = \frac{4}{4} \qquad p_2^{right} = \frac{1}{6}$$
+- This time, *Information Gain* is higher than both of the previous two.
+
+So, we will split our *Weight* feature based on this *threshold* value i.e. $9 lbs$.
+
+<img src="./images/cat-weight-tree.jpg" alt="cat weight tree" width="300px" padding="10px 50px">
+
+Now, here we randomly choose $3$ different values of *threshold* and find *Information Gain* in each and used the best one.
+
+But, in general way, we can't choose only $3$ values.
+
+- Rather, we sort the column values.
+- Then, take all the values of all the midpoints b/w that sorted list.
+- So, if we have $10$ training examples, then we use $9$ mid-points.
+- And find which one value has the highest *Information Gain*.
+- Finally, use that *threshold* value to split our continuous valued feature.
+
+---
+
