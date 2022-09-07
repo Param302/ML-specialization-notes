@@ -246,39 +246,38 @@ Now, let's see these steps with the _Cat Classification_ example:
 
 ### One Hot Encoding
 
-In *Cat Classification* example, we have this data:
+In _Cat Classification_ example, we have this data:
 
 <img src="./images/cat-data.jpg" alt="cat data" width="1000px" style="padding:10px">
 
-- But, let's say, now rather tha having $2$ values in *Ear Shape*, we will have $3$ values:
-- - *Pointy*
-- - *Floppy*
-- - *Oval*
+-   But, let's say, now rather tha having $2$ values in _Ear Shape_, we will have $3$ values:
+-   -   _Pointy_
+-   -   _Floppy_
+-   -   _Oval_
 
 <img src="./images/oh-encoding.jpg" alt="cat new data" width="1000px" style="padding:10px">
 
-- So, now we'll have a node for *Ear Shape* with $3$ values.
-- But we can transform this data, especially this feature so that in our tree we don't have any node with more than $2$ values.
+-   So, now we'll have a node for _Ear Shape_ with $3$ values.
+-   But we can transform this data, especially this feature so that in our tree we don't have any node with more than $2$ values.
 
-- We are going to use **One Hot Encoding**.
+-   We are going to use **One Hot Encoding**.
 
 > In **One Hot Encoding**, we encode the column(s) in $1$ and $0$ format, if it has $2$ values or we make separate columns for all unique values in a column with $1$ indicating presence of that value and $0$ indicating absence of that value.
 
-- So, after doing **One Hot Encoding**, our dataset will be:
+-   So, after doing **One Hot Encoding**, our dataset will be:
 
 <img src="./images/oh-encoding-1.jpg" alt="cat one hot encoded data" width="1000px" style="padding:10px">
 
-- Having $1$ in *Pointy ears* for those rows which has *Pointy* as value in *Ear Shape*, and similarly for *Floppy* and *Oval*.
-- Now, we can make **Decision Tree** on this dataset more easily.
-
+-   Having $1$ in _Pointy ears_ for those rows which has _Pointy_ as value in _Ear Shape_, and similarly for _Floppy_ and _Oval_.
+-   Now, we can make **Decision Tree** on this dataset more easily.
 
 ---
 
-- But, still we can't use this dataset for **neural networks** or **logistic regression**.
-- For that, we need to transform other $2$ features too!
-- So, for *Face Shape* and *Whiskers* feature, we can also do **One Hot Encoding**, where:
-- - replace *Round* with $1$ and *Not round* with $0$.
-- - Similarly, *Present* with $1$ and *Absent* with $0$.
+-   But, still we can't use this dataset for **neural networks** or **logistic regression**.
+-   For that, we need to transform other $2$ features too!
+-   So, for _Face Shape_ and _Whiskers_ feature, we can also do **One Hot Encoding**, where:
+-   -   replace _Round_ with $1$ and _Not round_ with $0$.
+-   -   Similarly, _Present_ with $1$ and _Absent_ with $0$.
 
 <img src="./images/oh-encoding-2.jpg" alt="cat fully one hot encoded data" width="1000px" style="padding:10px">
 
@@ -286,75 +285,249 @@ In *Cat Classification* example, we have this data:
 
 ### Continuous Valued Features
 
-Let's say now we have another column named *Weights* on *Cat Classification* example.
+Let's say now we have another column named _Weights_ on _Cat Classification_ example.
 
 So, our dataset is like this:
 
 <img src="./images/cat-weight-feature.jpg" alt="cat weight data" width="1000px" style="padding:10px">
 
-- Notice, the weight column is having continuous values.
-- Conversely, other features has discrete set of values.
+-   Notice, the weight column is having continuous values.
+-   Conversely, other features has discrete set of values.
 
-Now, the question is - How we can split the *Weight* feature ?
+Now, the question is - How we can split the _Weight_ feature ?
 
-- Let's plot the data on a *scatter plot* where:
-- - *weight* is on $x$-axis
-- - *Cat* (target variable) is on $y$-axis
+-   Let's plot the data on a _scatter plot_ where:
+-   -   _weight_ is on $x$-axis
+-   -   _Cat_ (target variable) is on $y$-axis
 
 <img src="./images/cat-weight-graph-1.jpg" alt="weight graph" width="500px" style="padding:10px 50px">
 
-- What we can do is,
-- We can make different *thresholds* here, and split data on them and find *Information Gain*, and which one has highest, we'll choose that *threshold* value.
-- First, let's say we choose $8$, so on $8$ we split our *weight* feature based on whether the weight is greater or less than $8 lbs.$ on not and calculate *Information Gain*.
+-   What we can do is,
+-   We can make different _thresholds_ here, and split data on them and find _Information Gain_, and which one has highest, we'll choose that _threshold_ value.
+-   First, let's say we choose $8$, so on $8$ we split our _weight_ feature based on whether the weight is greater or less than $8 lbs.$ on not and calculate _Information Gain_.
 
 <img src="./images/cat-weight-graph-2.jpg" alt="weight 8 lbs graph" width="500px" style="padding:10px 50px">
 
-- So, let's say the *Information Gain* is $0.24$.
+-   So, let's say the _Information Gain_ is $0.24$.
 
 $$H(0.5) = \left(\frac{2}{10}H\left(\frac{2}{2}\right) + \frac{8}{10}H\left(\frac{3}{8}\right)\right) = 0.24$$
-- where:
-$$w^{left} = \frac{2}{10} \qquad w^{right} = \frac{8}{10}$$
-$$p_1^{left} = \frac{2}{2} \qquad p_2^{right} = \frac{3}{8}$$
 
-- Similarly, now let's take *threshold* as $13$ and plot it and find *Information Gain* with it.
+-   where:
+    $$w^{left} = \frac{2}{10} \qquad w^{right} = \frac{8}{10}$$
+    $$p_1^{left} = \frac{2}{2} \qquad p_2^{right} = \frac{3}{8}$$
+
+-   Similarly, now let's take _threshold_ as $13$ and plot it and find _Information Gain_ with it.
 
 <img src="./images/cat-weight-graph-3.jpg" alt="weight 13 lbs graph" width="500px" style="padding:10px 50px">
 
-
-- Say, we got an *Information Gain* of $0.40$
+-   Say, we got an _Information Gain_ of $0.40$
 
 $$H(0.5) = \left(\frac{7}{10}H\left(\frac{5}{7}\right) + \frac{3}{10}H\left(\frac{0}{3}\right)\right) = 0.40$$
-- where:
-$$w^{left} = \frac{7}{10} \qquad w^{right} = \frac{3}{10}$$
-$$p_1^{left} = \frac{5}{7} \qquad p_2^{right} = \frac{0}{3}$$
-- This time, *Information Gain* is higher than previous one.
 
+-   where:
+    $$w^{left} = \frac{7}{10} \qquad w^{right} = \frac{3}{10}$$
+    $$p_1^{left} = \frac{5}{7} \qquad p_2^{right} = \frac{0}{3}$$
+-   This time, _Information Gain_ is higher than previous one.
 
-- let's now try with one more value of *threshold* i.e. $9$ and plot it and find *Information Gain* with it.
+-   let's now try with one more value of _threshold_ i.e. $9$ and plot it and find _Information Gain_ with it.
 
 <img src="./images/cat-weight-graph-4.jpg" alt="weight 9 lbs graph" width="500px" style="padding:10px 50px">
 
-- Say, we got an *Information Gain* of $0.61$.
+-   Say, we got an _Information Gain_ of $0.61$.
 
 $$H(0.5) = \left(\frac{4}{10}H\left(\frac{4}{4}\right) + \frac{6}{10}H\left(\frac{1}{6}\right)\right) = 0.40$$
-- where:
-$$w^{left} = \frac{4}{10} \qquad w^{right} = \frac{6}{10}$$
-$$p_1^{left} = \frac{4}{4} \qquad p_2^{right} = \frac{1}{6}$$
-- This time, *Information Gain* is higher than both of the previous two.
 
-So, we will split our *Weight* feature based on this *threshold* value i.e. $9 lbs$.
+-   where:
+    $$w^{left} = \frac{4}{10} \qquad w^{right} = \frac{6}{10}$$
+    $$p_1^{left} = \frac{4}{4} \qquad p_2^{right} = \frac{1}{6}$$
+-   This time, _Information Gain_ is higher than both of the previous two.
+
+So, we will split our _Weight_ feature based on this _threshold_ value i.e. $9 lbs$.
 
 <img src="./images/cat-weight-tree.jpg" alt="cat weight tree" width="300px" padding="10px 50px">
 
-Now, here we randomly choose $3$ different values of *threshold* and find *Information Gain* in each and used the best one.
+Now, here we randomly choose $3$ different values of _threshold_ and find _Information Gain_ in each and used the best one.
 
 But, in general way, we can't choose only $3$ values.
 
-- Rather, we sort the column values.
-- Then, take all the values of all the midpoints b/w that sorted list.
-- So, if we have $10$ training examples, then we use $9$ mid-points.
-- And find which one value has the highest *Information Gain*.
-- Finally, use that *threshold* value to split our continuous valued feature.
+-   Rather, we sort the column values.
+-   Then, take all the values of all the midpoints b/w that sorted list.
+-   So, if we have $10$ training examples, then we use $9$ mid-points.
+-   And find which one value has the highest _Information Gain_.
+-   Finally, use that _threshold_ value to split our continuous valued feature.
 
 ---
 
+### Regression Trees
+
+So, till now we have discussed how to build a **Decision Tree** for _Classification_ problems.
+
+But, now let's see how to build **Decision Trees** for _Regression_ problems
+
+Say, we have this dataset:
+
+<img src="./images/regression-cat.jpg" alt="regression-cat" width="1000px" style="padding:10px">
+
+-   where we have $3$ input features:
+-   -   _Ear Shape_
+-   -   _Face Shape_
+-   -   _Whiskers_
+-   and a target variable _Weight_ $y$.
+
+So, now we want to predict the weight of the animal withe the given _input_ features $\vec{x}$.
+
+#### Predicting the Output
+
+-   Say, we have build our **Decision Tree** like this:
+
+<img src="./images/regression-decision-tree.jpg" alt="decision tree" width="500px" style="padding:10px 50px">
+
+-   And, on each _leaf_ node we have splitted the animals.
+-   Now, let's say, we got a test data, where it has:
+-   -   Pointy _Ear Shape_
+-   -   Round _Face Shape_
+-   So, in this decision tree, it will end up reaching the leftmost _leaf_ node.
+-   There, we have $4$ animals with their weights $7.2, 8.4, 7.6, 10.2$.
+-   We will compute the average of all the weights, which will be our prediction for the test data.
+-   So, say, it's average is $8.35$, so this will our model's prediction.
+-   Now, similarly, if we encounter different test-cases which end up on all different _leaf_ node.
+-   Then, we will compute their average and output the average as the prediction of our model.
+
+<img src="./images/regression-decision-tree-2.jpg" alt="decision tree" width="500px" style="padding:10px 50px">
+
+-   Now, we don't know how we have splitted the features, like on basis of what ?
+-   So, let's figure it out, how do we split our features in _Regression_ problems.
+
+---
+
+### Splitting Features
+
+In _Classification_ problems, we find _Information Gain_, which is reduction in _Entropy_ and use that feature which has highest _Information Gain_.
+
+Here, in _Regression_ problems, we'll do a little different.
+
+-   Rather than calculating the _purity / Impurity_, we will compute the _variance_ in each split of each feature.
+
+#### Variance
+
+-   Variance describes how much our data varies.
+-   It's formula is:
+
+$$\text{Variance } = \frac{\sum\left(x^i - \mu\right)^2}{n}$$
+
+-   where:
+-   -   $\mu$ is the mean of the data
+-   -   $x^i$ is $i^{th}$ value of all examples.
+-   -   $n$ is no. of examples
+
+#### Reduction in Variance
+
+-   First, we will calculate variance in each feature split.
+-   We will split the data into all $3$ input features.
+-   Then, we will compute weighted average for each feature.
+-   Finally, subtract it from the variance in _root node_ i.e. $20.51$.
+
+#### _Ear Shape_
+
+<img src="./images/regression-split-1.jpg" alt="ear shape split" width="300px" style="padding:10px 50px">
+
+|  Branch   | Weight                     | Variance |      $w$       |
+| :-------: | :------------------------- | :------: | :------------: |
+| **left**  | $7.2, 9.2, 8.4, 7.6, 10.2$ |  $1.47$  | $\frac{5}{10}$ |
+| **right** | $8.8, 15, 11, 18, 20$      | $21.87$  | $\frac{5}{10}$ |
+
+$$20.51 - \left(\frac{5}{10}1.47 + \frac{5}{10}21.87\right)$$
+
+-   **Weighted Average**: $11.67$
+-   **Reduction in Variance**: $8.84$
+
+#### _Face Shape_
+
+<img src="./images/regression-split-2.jpg" alt="face shape split" width="300px" style="padding:10px 50px">
+
+|  Branch   | Weight                            | Variance |      $w$       |
+| :-------: | :-------------------------------- | :------: | :------------: |
+| **left**  | $7.2, 15, 8.4, 7.6, 10.2, 18, 20$ | $27.80$  | $\frac{7}{10}$ |
+| **right** | $8.8, 9.2, 11$                    |  $1.37$  | $\frac{3}{10}$ |
+
+$$20.51 - \left(\frac{7}{10}27.80 + \frac{3}{10}1.37\right)$$
+
+-   **Weighted Average**: $19.87$
+-   **Reduction in Variance**: $0.64$
+
+#### _Whiskers_
+
+<img src="./images/regression-split-3.jpg" alt="whiskers split" width="300px" style="padding:10px 50px">
+
+|  Branch   | Weight                      | Variance |      $w$       |
+| :-------: | :-------------------------- | :------: | :------------: |
+| **left**  | $7.2, 8.8, 8.2, 8.4$        |  $0.75$  | $\frac{4}{10}$ |
+| **right** | $7.6, 15, 11, 10.2, 18, 20$ | $23.32$  | $\frac{6}{10}$ |
+
+$$20.51 - \left(\frac{4}{10}0.75 + \frac{6}{10}23.32\right)$$
+
+-   **Weighted Average**: $14.29$
+-   **Reduction in Variance**: $6.22$
+
+#### Finalizing the Feature
+
+-   Now that we have computed the _Reduction in Variance_ for each feature.
+-   Similar to _Information Gain_, we will choose the feature which has highest _Reduction in Variance_.
+-   And, do this process recursively, until we met the stopping criteria.
+
+---
+
+#### Practice Quiz: Decision Trees
+
+#### Question 1
+
+<img src="../quizzes/Quiz%2013%20-%20Decision%20tree%20learning%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>b</em> then you are right!</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%2013%20-%20Decision%20tree%20learning%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>c</em> then you are right!</p>
+</details>
+
+
+#### Question 3
+
+<img src="../quizzes/Quiz%2013%20-%20Decision%20tree%20learning%20q3.jpg" alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>c [0, 0, 1]</em> then you are right!</p><p><b>Explanation:</b><br/>Yes! 0 is used to represent the absence of that feature (not pointy, not floppy), and 1 is used to represent the presence of that feature (oval).</p>
+</details>
+
+
+#### Question 4
+
+<img src="../quizzes/Quiz%2013%20-%20Decision%20tree%20learning%20q4.jpg" alt="practice quiz question 4" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 4</b></font>
+</summary>
+<p>If you have selected option <em>d (Choose the 9 mid-points between the 10 examples as possible splits, and find the split that gives the highest information gain.)</em> then you are right!</p>
+</details>
+
+
+#### Question 5
+
+<img src="../quizzes/Quiz%2013%20-%20Decision%20tree%20learning%20q5.jpg" alt="practice quiz question 5" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 5</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup> and 4<sup>th</sup></em> then you are right!</p>
+</details>
