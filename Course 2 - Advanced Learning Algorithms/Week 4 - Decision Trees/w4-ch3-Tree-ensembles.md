@@ -160,3 +160,132 @@ So, what we do is:
 > Answer is, in **Random Forest** 😅🤣🤣🤣
 
 ---
+
+### XGBoost
+
+-   **XGBoost** stands for _eXtreme Gradient Boosting_.
+
+-   **XGBoost** is fastest, most popular, most used **Decision Tree** based algorithm.
+
+-   If we do some more modification while doing _Sampling with replacement_ in **Bagged Decision Trees** algorithm, then we can achieve next level performance and boost in our model.
+
+Let's see what these modifications are, and how **XGBoost** works.
+
+#### Intuition
+
+-   In **Bagged Decision Tree** algorithm, we generate bootstrap of datasets $B$ times using _Sampling with replacement_ technique of all $m$ training examples.
+-   But in **XGBoost**, rather than doing _Sampling with replacement_ on all $m$ training examples.
+-   We increase the probability of choosing **missclassified examples** for _Sampling_.
+-   And, train a **Decision Tree** on those datasets.
+-   So that, our model will learn better on **missclassified examples**.
+
+#### Example
+
+-   Let's say we did _Sampling with replacement_ on all $m$ _training_ examples and we generated this dataset:
+
+<img src="./images/sample-data-1.jpg" alt="new sampled dataset 1" width="400px" style="padding:10px 50px">
+
+-   If we make a **Decision Tree** on this dataset, it will be like this:
+
+<img src="./images/sample-tree-1.jpg" alt="sample tree" width="300px" style="padding:10px 50px">
+
+-   So, with this tree, let's say out of all $m$ _training_ examples, we got $3$ wrong / missclassified results.
+
+<img src="./images/xgboost-data.jpg" alt="new sampled marked dataset 1" width="400px" style="padding:10px 50px">
+
+-   Now, what we do is somehow, increase the probability of these missclassified examples in our dataset for _Sampling_, so that chances of getting these examples will increased.
+-   And hence, our model will learn from them.
+-   Finally, our model's performance will be improved.
+-   And, **XGBoost** will use some efficient ways to do it.
+-   So, this is how **Boosting** works.
+-   And, **XGBoost** is can example of it.
+
+#### Advantages
+
+1. It is open source.
+2. It's faster than other **Decision Trees** based models.
+3. It has a good choice of default _splitting_ criteria and when to stop _splitting_.
+4. It has built-in **regularization** so it is less prone to _overfitting_.
+5. It is widely used in Competitions and commerical applications, same as deep learning algorithms.
+6. Rather than doing _Sampling with replacement_, it actually assigns different ways to different _training_ examples. So it doesn't really need to generate a lot of randomly chosen _training_ sets, which makes it more efficient than _Sampling with replacement_ procedure.
+
+#### How to use XGBoost
+
+1. We need to import `XGBClassifier` for _classification_ problems or _XGBRegressor_ for _regression_ problems from `XGBoost` library.
+
+```python
+from xgboost import XGBClassifier, XGBRegressor
+```
+
+2. To make a model, we just need to instantiate it.
+
+```python
+model = XGBClassifier()
+```
+
+3. To train the model, we can use `fit()` method.
+
+```python
+model.fit(X_train, y_train)
+```
+
+4. To do inference, we use `predict()` method.
+
+```python
+preds = model.predict(X_test)
+```
+
+-   So, these are steps to use `XGBoost`.
+
+---
+
+### _Decision Trees_ vs _Neural Networks_
+
+|          Basis          |                           **Decision Trees**                            | **Neural Networks**                                        |
+| :---------------------: | :---------------------------------------------------------------------: | :--------------------------------------------------------- |
+|   **Structured data**   |                   It works well on _Structured data_                    | It also works well on _Structured data_                    |
+|  **Unstructured data**  |                 It doesn't work on _Unstructured data_                  | It works well on _Unstructured data_                       |
+|        **Speed**        |                               **Faster**                                | **Slower**                                                 |
+| **Human Interpretable** | **Yes**<br/>We can visualize how a single **Decision Tree** is working. | **No**<br/> We cannot visualize well how they are working. |
+|  **Transfer learning**  |                It doesn't work with _Transfer learning_                 | It works with _Transfer learning_                          |
+|   **Multiple models**   |             We cannot combine _multiple_ **Decision Trees**             | We can combine _multiple_ **Neural Networks**              |
+
+---
+
+#### Practice Quiz: Tree ensembles
+
+#### Question 1
+
+<img src="../quizzes/Quiz%2014%20-%20Tree%20ensembles%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>b (Sample the training data with replacement) </em> then you are right!</p><p><b>Explanation:</b><br/>Correct. You can generate a training set that is unique for each individual tree by sampling the training data with replacement.</p>
+</details>
+
+#### Question 2
+
+<img src="../quizzes/Quiz%2014%20-%20Tree%20ensembles%20q2.jpg" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>a (A neural network, because the input is unstructured data and neural networks typically work better with unstructured data.)</em> then you are right!
+</details>
+
+#### Question 3
+
+<img src="../quizzes/Quiz%2014%20-%20Tree%20ensembles%20q3.jpg" alt="practice quiz question 3" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>c (Drawing a sequence of examples where, when picking the next example, first replacing all previously drawn examples into the set we are picking from. )</em> then you are right!</p>
+</details>
+
+---
+
+### Programming Assignment: Decision Trees [🔗](../codes/W4-%20Decision%20Trees%20assignment.ipynb)
+
+---
