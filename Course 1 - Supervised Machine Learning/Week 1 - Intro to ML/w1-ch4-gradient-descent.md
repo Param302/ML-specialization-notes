@@ -121,6 +121,7 @@ And it's graph looks something like this:
 
 <img src="./images/derivative-6.jpg" alt="final derivate graph" width="500px">
 
+---
 
 #### How *learning rate* effects *coefficients*
 1. Let's say we choose a small learning rate like `0.0001`.
