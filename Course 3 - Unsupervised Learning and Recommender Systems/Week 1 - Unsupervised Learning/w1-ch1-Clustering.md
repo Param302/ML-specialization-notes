@@ -348,3 +348,7 @@ Hence, if the **Elbow Point** is not clear, we can choose the number of clusters
 <p>If you have selected option <em>4<sup>th</sup> then you are right!<br/><b>Explanation:</b><br/>The elbow method plots a graph between the number of clusters K and the cost function. The ‘bend’ in the cost curve can suggest a natural value for K. Note that this feature may not exist or be significant in some data sets.</p>
 </details>
 
+---
+
+### Programming Assignment: K-Means [🔗](../codes/W1%20-%20PA1%20-%20K-Means%20Assignment.ipynb)
+
