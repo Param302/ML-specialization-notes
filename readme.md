@@ -15,7 +15,7 @@ This specialization is having total of 3 courses in it.
 |:-----:|------------------------------------------------------------|:-----------:|:--------:|:----------:|:------------:|
 | 1    | Supervised Machine Learning: Regression and Classification | [🔗](https://www.coursera.org/learn/machine-learning?specialization=machine-learning-introduction) | [🔗](./Course%201%20-%20Supervised%20Machine%20Learning/) | 11<sup>th</sup> July'22 |  1<sup>st</sup> Aug'22 |
 | 2    | Advanced Learning Algorithms                               | [🔗](https://www.coursera.org/learn/advanced-learning-algorithms?specialization=machine-learning-introduction) | [🔗](./Course%202%20-%20Advanced%20Learning%20Algorithms/) | 6<sup>th</sup> Aug'22 |  9<sup>th</sup> Sep'22 |
-| 3    | Unsupervised Learning and Recommender Systems              | [🔗](https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning?specialization=machine-learning-introduction) | Added soon | soon | soon |
+| 3    | Unsupervised Learning and Recommender Systems              | [🔗](https://www.coursera.org/learn/unsupervised-learning-recommenders-reinforcement-learning?specialization=machine-learning-introduction) | [🔗](./Course%203%20-%20Unsupervised%20Learning%20and%20Recommender%20Systems/) | 25<sup>th</sup> June'24 | soon |
 
 ---
 
