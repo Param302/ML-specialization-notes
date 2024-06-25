@@ -285,4 +285,66 @@ Hence, if the **Elbow Point** is not clear, we can choose the number of clusters
 ---
 
 
+### Quizzes
+
+#### Practice Quiz: Clustering
+
+#### Question 1
+
+<img src="../quizzes/Quiz 1 - Clustering q1.png" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>4<sup>th</sup> then you are right!<br/><b>Explanation:</b><br/>Unsupervised learning uses unlabeled data. The training examples do not have targets or labels "y". Recall the T-shirt example. The data was height and weight but no target size.</p>
+</details>
+
+
+#### Question 2
+
+<img src="../quizzes/Quiz 1 - Clustering q2.png" alt="practice quiz question 2" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup>, 2<sup>nd</sup> and 4<sup>th</sup></em> then you are right!<br/><b>Explanation:</b><br/>The dimension of μ<sub>k</sub>​ matches the dimension of the examples.<br/>c<sup>(i)</sup> describes which centroid example (i) is assigned to.<br/>c<sup>(i)</sup> describes which centroid example(i) is assigned to. If K=3, then c<sup>(i)</sup> would be one of 1,2 or 3 assuming counting starts at 1.</p>
+</details>
+
+
+#### Question 3
+
+<img src="../quizzes/Quiz 1 - Clustering q3.png" alt="practice quiz question 3" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup> then you are right!<br/><b>Explanation:</b><br/>K-means can arrive at different solutions depending on initialization. After running repeated trials, choose the solution with the lowest cost.</p>
+</details>
+
+
+#### Question 4
+
+<img src="../quizzes/Quiz 1 - Clustering q4.png" alt="practice quiz question 4" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 4</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup> and 3<sup>rd</sup></em> then you are right!<br/><b>Explanation:</b><br/>Yes, a neuron is a part of a neural network.<br/>Yes, an activation is the number calculated by a neuron (and an activation is a vector that is output by a layer that contains multiple neurons).</p>
+</details>
+
+
+#### Question 5
+
+<img src="../quizzes/Quiz 1 - Clustering q5.png" alt="practice quiz question 5" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 5</b></font>
+</summary>
+<p>If you have selected option <em>4<sup>th</sup> then you are right!<br/><b>Explanation:</b><br/>The elbow method plots a graph between the number of clusters K and the cost function. The ‘bend’ in the cost curve can suggest a natural value for K. Note that this feature may not exist or be significant in some data sets.</p>
+</details>
 

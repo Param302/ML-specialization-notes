@@ -321,6 +321,19 @@ Now, let's see an example of _Car Classification_, how **neural networks** are c
 <img src="../quizzes/Quiz%201%20-%20Neural%20Networks%20Intuition%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
 <details>
 <summary>    
+### Quizzes
+
+#### Practice Quiz: The problem of Overfitting
+
+#### Question 1
+
+<img src="../quizzes/Quiz%201%20-%20Neural%20Networks%20Intuition%20q1.jpg" alt="practice quiz question 1" width="70%" style="min-width: 850px">
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup>, 3<sup>rd</sup> and 4<sup>th</sup></em> then you are right!<br/><b>Explanation:</b><br/>Yes, a neuron is a part of a neural network.<br/>Yes, a layer is a grouping of neurons in a neural network.<br/>Yes, an activation is the number calculated by a neuron (and an activation is a vector that is output by a layer that contains multiple neurons).</p>
+</details>
     <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
 </summary>
 <p>If you have selected option <em>1<sup>st</sup>, 3<sup>rd</sup> and 4<sup>th</sup></em> then you are right!<br/><b>Explanation:</b><br/>Yes, a neuron is a part of a neural network.<br/>Yes, a layer is a grouping of neurons in a neural network.<br/>Yes, an activation is the number calculated by a neuron (and an activation is a vector that is output by a layer that contains multiple neurons).</p>
