@@ -159,7 +159,7 @@ $$x^{(i)} = \begin{bmatrix} x_1^{(i)} \\ x_2^{(i)} \\ \vdots \\ x_n^{(i)} \end{b
 ##### Step 3: Compute the probability density for each example $x$.
 
 - Compute the probability density $p(x)$ for each example $x$:
-  $$ p(x) = \prod_{i=1}^{n} p(x_i; \mu_i, \sigma_i^2) $$
+  $$ p(x) = \prod_{i=1}^{n} p(x_i; \mu_i, \sigma_i^2) = p(x_1; u_1, \sigma_1^2) \cdot p(x_2; u_2, \sigma_2^2) \cdot \ldots \cdot p(x_n; u_n, \sigma_n^2) $$
   $$ p(x) \approx Normal(\mu_i, \sigma_i)_{n} = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\sigma_i} \exp\left(-\frac{(x_i-\mu_i)^2}{2\sigma_i^2}\right) $$
 
 ##### Step 4: Flag an anomaly if $p(x) < \epsilon$.
@@ -306,3 +306,73 @@ Using these features, we can create new features like:
 - **Feature 2**: $x_2$ = (CPU load)$^2$ / Network traffic
 
 And we can monitor these features to detect anomalies.
+
+---
+
+
+### Quizzes
+
+#### Practice Quiz: Clustering
+
+#### Question 1
+
+<img src="../quizzes/Quiz 2 - Anomaly Detection q1.png" alt="practice quiz 2 question 1" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup></em> then you are right!<br/><b>Explanation:</b><br/>Creating an anomaly detection model does not require labeled data.</p>
+</details>
+
+
+#### Question 2
+
+<img src="../quizzes/Quiz 2 - Anomaly Detection q2.png" alt="practice quiz 2 question 2" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup></em> then you are right!<br/><b>Explanation:</b><br/>You have a sufficient number of anomalous examples to build a supervised learning model.</p>
+</details>
+
+
+#### Question 3
+
+<img src="../quizzes/Quiz 2 - Anomaly Detection q3.png" alt="practice quiz 2 question 3" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup></em> then you are right!<br/><b>Explanation:</b><br/>Anomalous examples are used to evaluate rather than train the model.</p>
+</details>
+
+
+#### Question 4
+
+<img src="../quizzes/Quiz 2 - Anomaly Detection q4.png" alt="practice quiz 2 question 4" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 4</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup></em> then you are right!<br/><b>Explanation:</b><br/>When ϵϵ is reduced, the probability of an event being classified as an anomaly is reduced.</p>
+</details>
+
+
+#### Question 5
+
+<img src="../quizzes/Quiz 2 - Anomaly Detection q5.png" alt="practice quiz 2 question 5" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 5</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup></em> then you are right!<br/><b>Explanation:</b><br/>According to the model described in lecture, p(A, B) = p(A) * p(B). .</p>
+</details>
+
+---
+
+
