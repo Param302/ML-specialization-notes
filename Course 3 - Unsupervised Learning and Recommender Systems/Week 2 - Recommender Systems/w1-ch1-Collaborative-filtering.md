@@ -224,3 +224,49 @@ where $\alpha$ is the learning rate and now $x$ is also a parameter to be optimi
 
 ---
 
+### Binary Labels: Favs, Likes and Clicks
+
+Now consider, instead of movie ratings per user for each movie, we will see whether a user has engaged with the movie or not.
+
+#### Data
+
+| Movie          | User 1 | User 2 | User 3 | User 4 | User 5 |
+| -------------- | :----: | :----: | :----: | :----: | :----: |
+| *Avatar*       |   1    |   ?    |   1    |   ?    |   0    |
+| *Brahmastra*   |   0    |   1    |   ?    |   0    |   1    |
+| *Inception*    |   1    |   1    |   0    |   1    |   ?    |
+| *Interstellar* |   ?    |   0    |   1    |   0    |   1    |
+| *Titanic*      |   0    |   1    |   1    |   ?    |   0    |
+| ...            |  ...   |  ...   |  ...   |  ...   |  ...   |
+
+Here, we have binary labels for each user for each movie, where $1$ indicates that the user has engaged with the movie and $0$ indicates that the user has not engaged with the movie.
+
+#### Examples
+Some more examples of binary labels can be:
+- Did user $j$ purchased an item after being shown?
+- Did user $j$ liked an item?
+- Did user $j$ clicked on ad?
+- Did user $j$ watched a video?
+
+#### Approach
+
+Now, as we've seen **Logistic Regression** can be used to predict binary labels, we can use the same approach to predict whether a user will engage with a movie or not.
+
+We can predict the probability of $y^{(i, j)} = 1$ for each user $j$ and movie $i$ using the **Logistic Regression** model:
+
+$$f(x^{(i)})_{(w^{(j)}, b^{(j)})} = \sigma(w^{(j)} \cdot x^{(i)} + b^{(j)})$$
+
+where $\sigma(z) = \frac{1}{1 + e^{-z}}$ is the **Sigmoid** function.
+
+We can use the same cost function as we used for **Logistic Regression**:
+
+For a single user with a single movie:
+
+$$ L(f_{(w^{(j)}, b^{(j)})}(x^{(i)})) = -y^{(i, j)} \log\left(f_{(w^{(j)}, b^{(j)})}(x^{(i)})\right) - (1 - y^{(i, j)}) \log\left(1 - f_{(w^{(j)}, b^{(j)})}(x^{(i)})\right) $$
+
+which can be represented for multiple users and movies as:
+
+$$ J(w, b, x) = \sum_{(i, j):r(i, j)=1} L\left(f_{(w, b, x)}(x), y^{(i, j)}\right) $$
+
+---
+
