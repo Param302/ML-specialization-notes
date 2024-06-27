@@ -50,6 +50,7 @@ Some features of the data are:
 - $x_2$ = vibration intensity
 
 We have a dataset like this:
+
 $$ \text{Dataset} = \{x^{(1)}, x^{(2)}, \ldots, x^{(m)}\} $$
 
 which is plotted as:
@@ -90,7 +91,8 @@ Gaussian Distribution is a continuous probability distribution that is symmetric
 - The mean $\mu$ determines the location of the center of the peak of the bell curve.
 - The variance $\sigma^2$ determines the width of the bell curve. The standard deviation $\sigma$ is the square root of the variance.
 - The **Probability Density Function (PDF)** of the Gaussian Distribution is given by:
-  $$ p(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) $$
+
+$$ p(x; \mu, \sigma^2) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right) $$
 
 <img src="images/gaussian-distribution.png" alt="Gaussian Distribution" width="500"/>
 
@@ -120,13 +122,16 @@ Given a dataset $\{x^{(1)}, x^{(2)}, \ldots, x^{(m)}\}$, we can estimate the par
 
 The parameters $\mu$ and $\sigma^2$ can be estimated as:
 - The mean $\mu$ is the average of the data points:
-  $$ \mu = \frac{1}{m} \sum_{i=1}^{m} x^{(i)} $$
+
+$$ \mu = \frac{1}{m} \sum_{i=1}^{m} x^{(i)} $$
 
 - The variance $\sigma^2$ is the average squared difference from the mean:
- $$ \sigma^2 = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu)^2 $$
+
+$$ \sigma^2 = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \mu)^2 $$
 
 - The standard deviation $\sigma$ is the square root of the variance:
-  $$ \sigma = \sqrt{\sigma^2} $$
+
+$$ \sigma = \sqrt{\sigma^2} $$
 
 ---
 
@@ -137,9 +142,11 @@ In Anomaly Detection, we will estimate the desnity of the data points using a **
 #### Algorithm Steps
 
 Say, we have our training set:
+
 $$\{x^{(1)}, x^{(2)}, \ldots, x^{(m)}\} \text{ where } x^{(i)} \in \mathbb{R}^n$$
 
 where, each example $x^{(i)}$ has $n$ features:
+
 $$x^{(i)} = \begin{bmatrix} x_1^{(i)} \\ x_2^{(i)} \\ \vdots \\ x_n^{(i)} \end{bmatrix}$$
 
 ##### Step 1: Choose $n$ features $x_i$ that you think might be indicative of anomalous examples.
@@ -149,18 +156,21 @@ $$x^{(i)} = \begin{bmatrix} x_1^{(i)} \\ x_2^{(i)} \\ \vdots \\ x_n^{(i)} \end{b
 ##### Step 2: Fit parameters $\mu_1, \mu_2, \ldots, \mu_n, \sigma_1^2, \sigma_2^2, \ldots, \sigma_n^2$.
 
 - For each feature $x_i$, estimate the parameters $\mu_i$ and $\sigma_i^2$ of the Gaussian Distribution:
-  $$ \mu_i = \frac{1}{m} \sum_{j=1}^{m} x_i^{(j)} $$
-  $$ \sigma_i^2 = \frac{1}{m} \sum_{j=1}^{m} (x_i^{(j)} - \mu_i)^2 $$
+
+$$ \mu_i = \frac{1}{m} \sum_{j=1}^{m} x_i^{(j)} $$
+$$ \sigma_i^2 = \frac{1}{m} \sum_{j=1}^{m} (x_i^{(j)} - \mu_i)^2 $$
 
 - Vectorized form:
-  $$ \vec{\mu} = \begin{bmatrix} \mu_1 \\ \mu_2 \\ \vdots \\ \mu_n \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} x^{(i)} $$
-  $$ \vec{\sigma}^2 = \begin{bmatrix} \sigma_1^2 \\ \sigma_2^2 \\ \vdots \\ \sigma_n^2 \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \vec{\mu})^2 $$
+
+$$ \vec{\mu} = \begin{bmatrix} \mu_1 \\ \mu_2 \\ \vdots \\ \mu_n \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} x^{(i)} $$
+$$ \vec{\sigma}^2 = \begin{bmatrix} \sigma_1^2 \\ \sigma_2^2 \\ \vdots \\ \sigma_n^2 \end{bmatrix} = \frac{1}{m} \sum_{i=1}^{m} (x^{(i)} - \vec{\mu})^2 $$
 
 ##### Step 3: Compute the probability density for each example $x$.
 
 - Compute the probability density $p(x)$ for each example $x$:
-  $$ p(x) = \prod_{i=1}^{n} p(x_i; \mu_i, \sigma_i^2) = p(x_1; u_1, \sigma_1^2) \cdot p(x_2; u_2, \sigma_2^2) \cdot \ldots \cdot p(x_n; u_n, \sigma_n^2) $$
-  $$ p(x) \approx Normal(\mu_i, \sigma_i)_{n} = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\sigma_i} \exp\left(-\frac{(x_i-\mu_i)^2}{2\sigma_i^2}\right) $$
+
+$$ p(x) = \prod_{i=1}^{n} p(x_i; \mu_i, \sigma_i^2) = p(x_1; u_1, \sigma_1^2) \cdot p(x_2; u_2, \sigma_2^2) \cdot \ldots \cdot p(x_n; u_n, \sigma_n^2) $$
+$$ p(x) \approx Normal(\mu_i, \sigma_i)_{n} = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\sigma_i} \exp\left(-\frac{(x_i-\mu_i)^2}{2\sigma_i^2}\right) $$
 
 ##### Step 4: Flag an anomaly if $p(x) < \epsilon$.
 
@@ -242,7 +252,7 @@ Let's see...
 | Basis | Anomaly Detection | Supervised Learning |
 |:---|:---:|:---:|
 | **Data** | Mostly unlabeled data | Labeled data |
-| **$\#$ samples** | Very few anomalies | Large number of normal examples |
+| **# samples** | Very few anomalies | Large number of normal examples |
 **Skewness** | Skewed towards normal examples | Balanced dataset |
 | **Goal** | Detect anomalies | Predict $y$ from $x$ |
 | **Scenario** | When we have various types of anomalies and hard for algorithm to learn from positive examples what anomalies look like | When we have enough positive examples for algorithm to learn from |
