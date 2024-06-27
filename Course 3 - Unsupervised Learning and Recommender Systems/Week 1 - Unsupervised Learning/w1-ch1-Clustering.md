@@ -158,19 +158,21 @@ repeat {
 
 #### Optimization Objective
 - The optimization objective of the K-means algorithm is to minimize the squared distance between the data points and the centroids.
+
 $$\text{min}_k ||x^{(i)} - \mu_{k}||^2$$
-
-
 
 #### Calculating the distance
 - We can use the **Euclidean Distance** to calculate the distance between two points, which is also known as the **L2 Norm**.
 - The Euclidean distance between two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by:
+
 $$ \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2} \\[1em]
 \text{which can be re-written as:} \\[1em]
 \sqrt{(x_1 - x_2)^2 + \dots + (n_1 - n_2)^2} $$
+
 - Also, here, rather than using distance, we can use the **squared distance** because, the squared distance will _emphasize the outliers_ also squared function is differentiable and easier to work with.
 
 So, the **squared Euclidean distance** between two points $(x_1, y_1)$ and $(x_2, y_2)$ is given by:
+
 $$ \sum_{i=1}^{n} (x_i - y_i)^2 = (x_1 - x_2)^2 + \dots + (n_1 - n_2)^2$$
 
 #### Edge case
@@ -193,9 +195,11 @@ We have to minimize the squared distance between the data points and the centroi
 
 #### Cost Function
 The cost function of the K-means algorithm is given by:
+
 $$ J(c^{(1)}, \dots, c^{(m)}, \mu_1, \dots, \mu_K) = \frac{1}{m} \sum_{i=1}^{m} ||x^{(i)} - \mu_{c^{(i)}}||^2 $$
 
 And, our goal is to minimize this cost function.
+
 $$ \text{min}_{c^{(1)}, \dots, c^{(m)}} J(c^{(1)}, \dots, c^{(m)}, \mu_1, \dots, \mu_K) $$
 
 To minimize the cost function, we repeat those two steps, until the centroids converges and hence, the cost function minimizes.
@@ -272,6 +276,7 @@ Suppose, we have some data points corresponding to different weights and heights
 **$K=3$**
 
 If we choose $k=3$, then we will get $3$ clusters, which are *Small*, *Medium* and *Large* T-shirts.
+
 <img src="./images/k-means-tshirt-sizing.png" alt="K means algorithm t-shirt sizing" height="250px">
 
 

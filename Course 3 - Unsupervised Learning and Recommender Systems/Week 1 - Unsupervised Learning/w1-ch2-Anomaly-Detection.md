@@ -170,6 +170,7 @@ $$ \vec{\sigma}^2 = \begin{bmatrix} \sigma_1^2 \\ \sigma_2^2 \\ \vdots \\ \sigma
 - Compute the probability density $p(x)$ for each example $x$:
 
 $$ p(x) = \prod_{i=1}^{n} p(x_i; \mu_i, \sigma_i^2) = p(x_1; u_1, \sigma_1^2) \cdot p(x_2; u_2, \sigma_2^2) \cdot \ldots \cdot p(x_n; u_n, \sigma_n^2) $$
+
 $$ p(x) \approx Normal(\mu_i, \sigma_i)_{n} = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\sigma_i} \exp\left(-\frac{(x_i-\mu_i)^2}{2\sigma_i^2}\right) $$
 
 ##### Step 4: Flag an anomaly if $p(x) < \epsilon$.
@@ -196,9 +197,9 @@ When developing an **Anomaly Detection System**, making decisions like choosing 
 Assume we have some labeled data, where we have some normal examples and some anomalous examples. Like: $y = 0$ for normal examples and $y = 1$ for anomalous examples.
 
 We can split the dataset into three parts:
-- **Training Set**: $60\%$ of the data
-- **Cross Validation Set**: $20\%$ of the data
-- **Test Set**: $20\%$ of the data
+- **Training Set**: $60$% of the data
+- **Cross Validation Set**: $20$% of the data
+- **Test Set**: $20$% of the data
 
 where, the **Cross Validation Set** and **Test Set** have some labeled anomalies.
 
@@ -234,11 +235,16 @@ But, there are some other **Evaluation Metrics** that we can use to evaluate the
 
 Based on these **Evaluation Metrics**, we can compute some other metrics like:
 - **Precision**: The fraction of anomalies that were correctly detected.
-  $$ \text{Precision} = \frac{TP}{TP + FP} $$
+
+$$ \text{Precision} = \frac{TP}{TP + FP} $$
+
 - **Recall (True Positive Rate)**: The fraction of the total amount of anomalies that were detected.
-  $$ \text{Recall} = \frac{TP}{TP + FN} $$
+
+$$ \text{Recall} = \frac{TP}{TP + FN} $$
+
 - **$F_1$ Score**: The harmonic mean of **Precision** and **Recall**.
-  $$ F_1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} $$
+
+$$ F_1 = \frac{2 \cdot \text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}} $$
 
 
 But, if we have some labelled data, why can't we use a **Supervised Learning Algorithm** like **Logistic Regression** to solve the **Anomaly Detection Problem**?
