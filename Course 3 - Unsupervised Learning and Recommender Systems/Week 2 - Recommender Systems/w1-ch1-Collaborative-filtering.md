@@ -268,5 +268,60 @@ which can be represented for multiple users and movies as:
 
 $$ J(w, b, x) = \sum_{(i, j):r(i, j)=1} L\left(f_{(w, b, x)}(x), y^{(i, j)}\right) $$
 
+
 ---
 
+
+### Quizzes
+
+#### Practice Quiz: Collaborative Filtering
+
+#### Question 1
+
+<img src="../quizzes/Quiz 3 - Anomaly Detection q1.png" alt="practice quiz 3 question 1" width="70%" style="min-width: 850px">
+
+<details>
+<summary>
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have entered <em>4</em> then you are right!<br/><b>Explanation:</b><br/>This is the number of users. n<sub>m</sub>​ is the number of movies/items and is 3 in this table.</p>
+</details>
+
+
+#### Question 2
+
+<img src="../quizzes/Quiz 3 - Anomaly Detection q2.png" alt="practice quiz 3 question 2" width="70%" style="min-width: 850px">
+
+<details>
+<summary>
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have entered <em>0</em> then you are right!<br/><b>Explanation:</b><br/>r(i,j) is a 1 if the movie has a rating and 0 if it does not. In the table above, a question mark indicates there is no rating.</p>
+</details>
+
+
+#### Question 3
+
+<img src="../quizzes/Quiz 3 - Anomaly Detection q3.png" alt="practice quiz 3 question 3" width="70%" style="min-width: 850px">
+
+<details>
+<summary>
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>3<sup>rd</sup></em> then you are right!<br/><b>Explanation:</b><br/>You can find "similar" books by learning feature values using collaborative filtering.</p>
+</details>
+
+
+#### Question 4
+
+<img src="../quizzes/Quiz 3 - Anomaly Detection q4.png" alt="practice quiz 3 question 4" width="70%" style="min-width: 850px">
+
+<details>
+<summary>
+    <font size='3' color='#00FF00'>Answer to <b>question 4</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup> & 2<sup>nd</sup></em> then you are right!<br/><b>Explanation:</b><br/>fav/likes/clicks on an item shows a user's interest in that item. It also shows that an item is interesting to a user.<br/>Purchasing an item shows a user's preference for that item. It also shows that an item is preferred by a user.</p>
+</details>
+
+
+---

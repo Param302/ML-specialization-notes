@@ -328,7 +328,7 @@ And we can monitor these features to detect anomalies.
 
 ### Quizzes
 
-#### Practice Quiz: Clustering
+#### Practice Quiz: Anomaly Detection
 
 #### Question 1
 
