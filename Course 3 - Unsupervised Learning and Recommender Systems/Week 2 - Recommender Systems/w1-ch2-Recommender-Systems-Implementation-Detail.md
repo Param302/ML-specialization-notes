@@ -70,3 +70,80 @@ But in this case, this wouldn't be much helpful, as we are predicting the movie 
 
 ---
 
+### Tensorflow Implementation of Collaborative Filtering
+
+#### Step 1: Load the Required Libraries
+
+```python
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+```
+
+#### Step 2: Create the Data Matrix
+
+```python
+data = pd.read_csv("movie_ratings.csv", index_col="movie")
+```
+
+#### Step 3: Initialize required variables and Parameters
+
+```python
+n_movies, n_users = data.shape
+n_features = 10
+
+y = data.values
+# R(i, j) = 1 if user j has rated movie i, else 0
+R = np.where(y != 0, 1, 0)
+
+# Set Initial Parameters (W, X), use tf.Variable to track these variables
+tf.random.set_seed(1234) # for consistent results
+W = tf.Variable(tf.random.normal((n_users,  n_features),dtype=tf.float64),  name='W')
+X = tf.Variable(tf.random.normal((n_movies, n_features),dtype=tf.float64),  name='X')
+b = tf.Variable(tf.random.normal((1, n_users),   dtype=tf.float64),  name='b')
+
+learning_rate = 0.01
+epochs = 100
+lambda_ = 1
+```
+
+#### Step 4: Initialize the Optimizer
+
+```python
+optimizer = tf.optimizers.Adam(learning_rate)
+```
+
+#### Step 5: Define the Cost Function
+
+```python
+def cofi_cost_function(X, W, b, Y, R, n_users, n_movies, lambda_):
+    # Predict the Ratings
+    predictions = tf.matmul(X, W, transpose_b=True) + b
+    
+    # Calculate the Cost
+    cost = 0.5 * tf.reduce_sum(R * tf.square(predictions - Y))
+    
+    # Add Regularization
+    cost += (lambda_ / 2) * (tf.reduce_sum(tf.square(W)) + tf.reduce_sum(tf.square(X)))
+    
+    return cost
+```
+
+
+
+#### Step 5: Run the Optimization
+
+```python
+for epoch in range(epochs):
+    # Use TensorFlow’s GradientTape
+    # to record the operations used to compute the cost 
+    with tf.GradientTape() as tape:
+        cost = cofi_cost_function(X, W, b, Y_norm, R, n_users, n_movies, lambda_)
+        
+    # Calculate the Gradients
+    gradients = tape.gradient(cost, [W, X, b])
+    
+    # Update the Parameters
+    optimizer.apply_gradients(zip(gradients, [W, X, b]))
+```
+
