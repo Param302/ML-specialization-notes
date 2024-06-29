@@ -201,4 +201,105 @@ Now, we are predicting the ratings for the users and adding the mean to the pred
 
 ---
 
+### Finding related items
+
+Let's say we have predicted the ratings for a user $j$ for a movie $i$ or we've predicted whether user $j$ will like movie $i$ or not. Then based on that, we have to find whether user $j$ will like other movies or not.
+
+Technically, say the features are $x^{(i)}$ of item $i$ are there, now we want to find which other items are similar to item $i$.
+Here, we need to find related items.
+
+We can use **Squared Distance** to find the related items.
+
+#### Squared Distance
+
+The **Squared Distance** between two items $i$ and $j$ is given by:
+
+$$ d(i, k) = \sum_{l=1}^{n} (x_l^{(k)} - x_l^{(i)})^2 $$
+
+Here:
+- $x_l^{(i)}$ is the $l^{th}$ feature of item $i$.
+- We are distance between each item $k$ and item $i$.
+
+Then, we will find the items which have the least distance with item $i$ and that will be the related items to item $i$.
+
+#### Cosine Similarity
+
+Another way to find the related items is by using **Cosine Similarity**.
+
+The **Cosine Similarity** between two items $i$ and $j$ is given by:
+
+$$ \text{Cosine Similarity}(i, j) = \frac{x^{(i)} \cdot x^{(j)}}{\|x^{(i)}\| \cdot \|x^{(j)}\|} $$
+
+Here:
+- $x^{(i)}$ is the feature vector of item $i$.
+- $x^{(j)}$ is the feature vector of item $j$.
+
+The **Cosine Similarity** will give us the similarity between two items. The higher the **Cosine Similarity**, the more similar the items are.
+
+#### Weakness of Collaborative Filtering
+
+1. **Cold Start Problem**
+    - When a new item is added in the dataset, and there are no or very few ratings for that item, it's hard to rank those items.
+    - Similarly, for new users who have rated very few items, how can we make sure we show them something reasonable?
+
+2. **Extra Information**
+    - **Collaborative Filtering** only uses the user-item interactions to make recommendations. It doesn't use any extra information like the genre of the movie, the director of the movie or from where the user is.
+    - By using more information, we can make better recommendations. This is where **Content-Based Filtering** comes into play. We'll discuss this in the next chapter.
+
+---
+
+### Programming Assignment: Collaborative Filtering Recommender Systems [🔗](../codes/W2%20-%20PA1%20-%20Collaborative%20RecSys%20Assignment.ipynb)
+
+---
+
+### Quizzes
+
+#### Practice Quiz: Anomaly Detection
+
+#### Question 1
+
+<img src="../quizzes/Quiz 3 - RecSys Implementation q1.png" alt="practice quiz 3 question 1" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 1</b></font>
+</summary>
+<p>If you have selected option <em>3<sup>rd</sup></em> then you are right!<br/><b>Explanation:</b><br/>This is the mean normalization algorithm described in lecture. This will result in a zero average value on a per-row basis.</p>
+</details>
+
+
+#### Question 2
+
+<img src="../quizzes/Quiz 3 - RecSys Implementation q2.png" alt="practice quiz 3 question 2" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 2</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup></em> then you are right!<br/><b>Explanation:</b><br/>Recall in Course 2, you were able to build a neural network using a ‘model’, ‘compile’, ‘fit’, sequence which managed the training for you. A custom training loop was utilized in this situation because training w, b, and x does not fit the standard layer paradigm of TensorFlow's neural network flow. There are alternate solutions such as custom layers, however, it is useful in this course to introduce you to this powerful feature of TensorFlow.</p>
+</details>
+
+
+#### Question 3
+
+<img src="../quizzes/Quiz 3 - RecSys Implementation q3.png" alt="practice quiz 3 question 3" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 3</b></font>
+</summary>
+<p>If you have selected option <em>2<sup>nd</sup></em> then you are right!<br/><b>Explanation:</b><br/>The distance from ‘Pies, Pies, Pies’ is 9 + 0 + 0 = 9.</p>
+</details>
+
+
+#### Question 4
+
+<img src="../quizzes/Quiz 3 - RecSys Implementation q4.png" alt="practice quiz 3 question 4" width="70%" style="min-width: 850px">
+
+<details>
+<summary>    
+    <font size='3' color='#00FF00'>Answer to <b>question 4</b></font>
+</summary>
+<p>If you have selected option <em>1<sup>st</sup> and 3<sup>rd</sup></em> then you are right!<br/><b>Explanation:</b><br/>A recommendation system uses user feedback to fit the prediction model.<br/>A recommendation system uses product feedback to fit the prediction model.</p>
+</details>
 
