@@ -80,11 +80,18 @@ import pandas as pd
 import tensorflow as tf
 ```
 
+We will be using:
+- `numpy` for numerical operations.
+- `pandas` to load the dataset.
+- `tensorflow` to implement the Collaborative Filtering.
+
 #### Step 2: Create the Data Matrix
 
 ```python
 data = pd.read_csv("movie_ratings.csv", index_col="movie")
 ```
+
+- The dataset is loaded in the DataFrame `data`.
 
 #### Step 3: Initialize required variables and Parameters
 
@@ -107,19 +114,36 @@ epochs = 100
 lambda_ = 1
 ```
 
+Here, we have initialized various variables:
+- `n_movies` and `n_users` are the number of movies and users in the dataset.
+- `n_features` is the number of features we want to use.
+- `y` is the dataset values.
+- `R` is the matrix where $R(i, j) = 1$ if user $j$ has rated movie $i$, else $0$.
+
+Then, we have initialized the parameters:
+- `W` is the matrix of shape $(n_{u}, n)$.
+- `X` is the matrix of shape $(n_{m}, n)$.
+- `b` is the bias term of shape $(1, n_{u})$.
+
+Also, some additional variables like `learning_rate`, `epochs`, and `lambda_` are initialized.
+
 #### Step 4: Initialize the Optimizer
 
 ```python
 optimizer = tf.optimizers.Adam(learning_rate)
 ```
 
+We have initialized the `Adam` optimizer with the `learning_rate` defined earlier.
+
+**Adam** is an optimization algorithm that can be used instead of the classical **Gradient Descent** procedure to update network weights iterative based in training data. It's better than **Gradient Descent**.
+
+
 #### Step 5: Define the Cost Function
 
 ```python
 def cofi_cost_function(X, W, b, Y, R, n_users, n_movies, lambda_):
     # Predict the Ratings
-    predictions = tf.matmul(X, W, transpose_b=True) + b
-    
+    predictions = (tf.linalg.matmul(X, tf.transpose(W)) + b - Y) * R
     # Calculate the Cost
     cost = 0.5 * tf.reduce_sum(R * tf.square(predictions - Y))
     
@@ -129,7 +153,17 @@ def cofi_cost_function(X, W, b, Y, R, n_users, n_movies, lambda_):
     return cost
 ```
 
+Here, we have defined the cost function for the Collaborative Filtering.
 
+
+#### Step 6: Normalize the Data
+
+```python
+Y_mean = np.mean(y, axis=1)
+Y_norm = y - Y_mean[:, np.newaxis]
+```
+
+We have calculated the mean of the dataset and subtracted it from the dataset to normalize the dataset.
 
 #### Step 5: Run the Optimization
 
@@ -146,4 +180,25 @@ for epoch in range(epochs):
     # Update the Parameters
     optimizer.apply_gradients(zip(gradients, [W, X, b]))
 ```
+
+Here, we have run the optimization for `epochs` number of times.
+
+- We have used `GradientTape` to record the operations used to compute the cost.
+- Then, we have calculated the gradients of the cost with respect to the parameters using `tape.gradient`.
+- `tape.gradient` automatically calculates the gradients of the cost with respect to the parameters.
+- Finally, we are applying the gradients to the parameters using the optimizer and updating them using `optimizer.apply_gradients`.
+
+#### Step 6: Predict the Ratings
+
+```python
+predictions = tf.linalg.matmul(X, tf.transpose(W)) + b
+
+# Add the Mean to the Predicted Ratings
+predictions += Y_mean[:, np.newaxis]
+```
+
+Now, we are predicting the ratings for the users and adding the mean to the predicted ratings to get the actual ratings.
+
+---
+
 
