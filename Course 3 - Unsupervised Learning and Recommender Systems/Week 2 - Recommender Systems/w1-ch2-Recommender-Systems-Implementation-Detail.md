@@ -254,7 +254,7 @@ The **Cosine Similarity** will give us the similarity between two items. The hig
 
 ### Quizzes
 
-#### Practice Quiz: Anomaly Detection
+#### Practice Quiz: Recommender System Implementation
 
 #### Question 1
 
