@@ -196,7 +196,7 @@ Means, let's say initial value of `w` is this:
 > For `w` *derivative*:
 > $$\frac{dj(w,b)}{dw} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})x^{(i)}$$
 > For `b` *derivative*:
-> $$\frac{dj(w,b)}{dw} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$$
+> $$\frac{dj(w,b)}{db} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$$
 > These formulae are derived from *calculus*. ~ *Andrew Ng*
 
 #### How formula $\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})x^{(i)}$ for `w` parameter derives:
