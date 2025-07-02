@@ -250,7 +250,7 @@ In _Cat Classification_ example, we have this data:
 
 <img src="./images/cat-data.jpg" alt="cat data" width="1000px" style="padding:10px">
 
--   But, let's say, now rather tha having $2$ values in _Ear Shape_, we will have $3$ values:
+-   But, let's say, now rather than having $3$ values in _Ear Shape_, we will have $3$ values:
 -   -   _Pointy_
 -   -   _Floppy_
 -   -   _Oval_
