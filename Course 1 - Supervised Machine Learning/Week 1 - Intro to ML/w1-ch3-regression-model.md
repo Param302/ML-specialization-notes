@@ -108,7 +108,7 @@ $$\sum_{i = 1}(ŷ^{(i)} - y^{(i)})^2$$
 $$\sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
 6. To compute the cost function whose value doesn't get bigger automatically, we will take average of `m` by dividing it with `1`.
 $$\frac{1}{2m} \sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
-7. We are dividing `1` by `2m` instead of `m` so that the cost function doesn't depend upon the number of training examples, this helps us in better comparison.
+7. We are dividing `1` by `2m` instead of `m` by convention to simplify later calculations which we will cover in the next chapter (gradient decent / derivatives).
 8. We will refer to this expression to $j(w, b)$ eventually, we will find out the best values for our weights `w` and `b`.
 $$j(w, b) = \frac{1}{2m} \sum\limits_{i = 1}^{m}(ŷ^{(i)} - y^{(i)})^2$$
 9. And we know that, `ŷ` is the predicted value of function $f_{w, b}(x)$, so will substitute it.
