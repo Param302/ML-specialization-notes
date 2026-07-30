@@ -27,7 +27,7 @@ There are 3 main types of Machine learning
 ### Superivsed learning
 > It refers to algorithms that learn `x` to `y` or **input** to **output** mappings.
 > 
-> The key characterstic of superivsed learning is that you give your learning algorithm examples to learn from, which includes the right answers (`y`) for a given input (`x`), and is by seeing correct pairs of input `x` and desired output label `y` that the learning algorithm eventually learns to take just the input alone without the output label adn gives a reasonably accurate prediction or guess the output. ~ *Andrew Ng*
+> The key characterstic of superivsed learning is that you give your learning algorithm examples to learn from, which includes the right answers (`y`) for a given input (`x`), and is by seeing correct pairs of input `x` and desired output label `y` that the learning algorithm eventually learns to take just the input alone without the output label and gives a reasonably accurate prediction or guess the output. ~ *Andrew Ng*
 
 In Supervised learning, the algorithm maps the input data with output labeled data and guess the output on new input based on the mapping.
 
