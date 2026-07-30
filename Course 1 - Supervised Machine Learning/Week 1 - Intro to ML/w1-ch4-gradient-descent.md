@@ -190,16 +190,16 @@ Means, let's say initial value of `w` is this:
 > - *Derivative* becomes smaller
 > - Update steps becomes smaller
 
-#### How derivatives $\frac{dj(w,b)}{dw}$ and $\frac{d}{dwb}j(w,b)$ are calculated ? [optional]
+#### How derivatives $\frac{dj(w,b)}{dw}$ and $\frac{dj(w,b)}{db}$ are calculated ? [optional]
 > It turns out if calculate these derivatives with respect to `w` and `b` with below formulae, it will work.
 >
 > For `w` *derivative*:
-> $$\frac{dj(w,b)}{dw} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})x^{(i)}$$
+> $$\frac{dj(w,b)}{dw} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$$
 > For `b` *derivative*:
-> $$\frac{dj(w,b)}{db} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$$
+> $$\frac{dj(w,b)}{db} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)}) - y^{(i)})$$
 > These formulae are derived from *calculus*. ~ *Andrew Ng*
 
-#### How formula $\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})x^{(i)}$ for `w` parameter derives:
+#### How formula $\frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)}) - y^{(i)})x^{(i)}$ for `w` parameter derives:
 
 **Note**: I don't know *calculus*, but I have derived it accordingly how *Andrew Ng* sir said.
 
@@ -218,7 +218,7 @@ $$\frac{1}{\cancel{2}m}\sum\limits_{i=1}^m(wx^{(i)}+b - y^{(i)})\cancel{2}x^{(i)
 After cancelling out `2`, we got this final formula for `w` parameter:
 > $$\frac{1}{m}\sum\limits_{i=1}^m(wx^{(i)}+b - y^{(i)})x^{(i)}$$
 
-#### How formula $\frac{dj(w,b)}{dw} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)} - y^{(i)})$ for `b` parameter derives:
+#### How formula $\frac{dj(w,b)}{db} = \frac{1}{m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)}) - y^{(i)})$ for `b` parameter derives:
 
 Similarly, we know that:
 $$\frac{dj(w,b)}{db}\enspace=\enspace\frac{d}{db}\frac{1}{2m}\sum\limits_{i=1}^m(f_{w,b}(x^{(i)}) - y^{(i)})^2$$
